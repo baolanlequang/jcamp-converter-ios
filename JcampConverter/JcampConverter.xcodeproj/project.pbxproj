@@ -15,6 +15,7 @@
 		30D20A5326540906006583FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30D20A5126540906006583FC /* LaunchScreen.storyboard */; };
 		30D20A5E26540907006583FC /* JcampConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D20A5D26540907006583FC /* JcampConverterTests.swift */; };
 		30D20A6926540907006583FC /* JcampConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D20A6826540907006583FC /* JcampConverterUITests.swift */; };
+		30D20A782654097D006583FC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D20A772654097D006583FC /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		30D20A6426540907006583FC /* JcampConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JcampConverterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D20A6826540907006583FC /* JcampConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JcampConverterUITests.swift; sourceTree = "<group>"; };
 		30D20A6A26540907006583FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30D20A772654097D006583FC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		30D20A4526540903006583FC /* JcampConverter */ = {
 			isa = PBXGroup;
 			children = (
+				30D20A762654095B006583FC /* Jcamp */,
 				30D20A4626540903006583FC /* AppDelegate.swift */,
 				30D20A4826540903006583FC /* SceneDelegate.swift */,
 				30D20A4A26540903006583FC /* ViewController.swift */,
@@ -126,6 +129,14 @@
 				30D20A6A26540907006583FC /* Info.plist */,
 			);
 			path = JcampConverterUITests;
+			sourceTree = "<group>";
+		};
+		30D20A762654095B006583FC /* Jcamp */ = {
+			isa = PBXGroup;
+			children = (
+				30D20A772654097D006583FC /* Constants.swift */,
+			);
+			path = Jcamp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +272,7 @@
 				30D20A4B26540903006583FC /* ViewController.swift in Sources */,
 				30D20A4726540903006583FC /* AppDelegate.swift in Sources */,
 				30D20A4926540903006583FC /* SceneDelegate.swift in Sources */,
+				30D20A782654097D006583FC /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
