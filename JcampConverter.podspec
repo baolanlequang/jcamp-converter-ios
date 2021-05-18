@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "JcampConverter"
-  spec.version      = "0.0.2"
+  spec.version      = "0.0.3"
   spec.summary      = "Jcamp Reader for iOS"
   spec.swift_versions   = ['4.0', '5.0']
 
