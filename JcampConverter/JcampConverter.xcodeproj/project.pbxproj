@@ -16,6 +16,8 @@
 		30D20A5E26540907006583FC /* JcampConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D20A5D26540907006583FC /* JcampConverterTests.swift */; };
 		30D20A6926540907006583FC /* JcampConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D20A6826540907006583FC /* JcampConverterUITests.swift */; };
 		30D20A782654097D006583FC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D20A772654097D006583FC /* Constants.swift */; };
+		30D20A7A26540C7D006583FC /* JcampReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D20A7926540C7D006583FC /* JcampReader.swift */; };
+		30D20A7C26540D4A006583FC /* 1h.jdx in Resources */ = {isa = PBXBuildFile; fileRef = 30D20A7B26540D4A006583FC /* 1h.jdx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		30D20A6826540907006583FC /* JcampConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JcampConverterUITests.swift; sourceTree = "<group>"; };
 		30D20A6A26540907006583FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30D20A772654097D006583FC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		30D20A7926540C7D006583FC /* JcampReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JcampReader.swift; sourceTree = "<group>"; };
+		30D20A7B26540D4A006583FC /* 1h.jdx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1h.jdx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				30D20A762654095B006583FC /* Jcamp */,
+				30D20A7B26540D4A006583FC /* 1h.jdx */,
 				30D20A4626540903006583FC /* AppDelegate.swift */,
 				30D20A4826540903006583FC /* SceneDelegate.swift */,
 				30D20A4A26540903006583FC /* ViewController.swift */,
@@ -135,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				30D20A772654097D006583FC /* Constants.swift */,
+				30D20A7926540C7D006583FC /* JcampReader.swift */,
 			);
 			path = Jcamp;
 			sourceTree = "<group>";
@@ -245,6 +251,7 @@
 				30D20A5326540906006583FC /* LaunchScreen.storyboard in Resources */,
 				30D20A5026540906006583FC /* Assets.xcassets in Resources */,
 				30D20A4E26540903006583FC /* Main.storyboard in Resources */,
+				30D20A7C26540D4A006583FC /* 1h.jdx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +278,7 @@
 			files = (
 				30D20A4B26540903006583FC /* ViewController.swift in Sources */,
 				30D20A4726540903006583FC /* AppDelegate.swift in Sources */,
+				30D20A7A26540C7D006583FC /* JcampReader.swift in Sources */,
 				30D20A4926540903006583FC /* SceneDelegate.swift in Sources */,
 				30D20A782654097D006583FC /* Constants.swift in Sources */,
 			);
@@ -449,6 +457,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FBSVXGZTXU;
 				INFOPLIST_FILE = JcampConverter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -467,6 +476,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FBSVXGZTXU;
 				INFOPLIST_FILE = JcampConverter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
