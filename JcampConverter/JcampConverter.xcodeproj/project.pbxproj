@@ -1,0 +1,592 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		30D20A4726540903006583FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D20A4626540903006583FC /* AppDelegate.swift */; };
+		30D20A4926540903006583FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D20A4826540903006583FC /* SceneDelegate.swift */; };
+		30D20A4B26540903006583FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D20A4A26540903006583FC /* ViewController.swift */; };
+		30D20A4E26540903006583FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30D20A4C26540903006583FC /* Main.storyboard */; };
+		30D20A5026540906006583FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30D20A4F26540906006583FC /* Assets.xcassets */; };
+		30D20A5326540906006583FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30D20A5126540906006583FC /* LaunchScreen.storyboard */; };
+		30D20A5E26540907006583FC /* JcampConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D20A5D26540907006583FC /* JcampConverterTests.swift */; };
+		30D20A6926540907006583FC /* JcampConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D20A6826540907006583FC /* JcampConverterUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		30D20A5A26540907006583FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 30D20A3B26540903006583FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30D20A4226540903006583FC;
+			remoteInfo = JcampConverter;
+		};
+		30D20A6526540907006583FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 30D20A3B26540903006583FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30D20A4226540903006583FC;
+			remoteInfo = JcampConverter;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		30D20A4326540903006583FC /* JcampConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JcampConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		30D20A4626540903006583FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		30D20A4826540903006583FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		30D20A4A26540903006583FC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		30D20A4D26540903006583FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		30D20A4F26540906006583FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		30D20A5226540906006583FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		30D20A5426540906006583FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30D20A5926540907006583FC /* JcampConverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JcampConverterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		30D20A5D26540907006583FC /* JcampConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JcampConverterTests.swift; sourceTree = "<group>"; };
+		30D20A5F26540907006583FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30D20A6426540907006583FC /* JcampConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JcampConverterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		30D20A6826540907006583FC /* JcampConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JcampConverterUITests.swift; sourceTree = "<group>"; };
+		30D20A6A26540907006583FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		30D20A4026540903006583FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30D20A5626540907006583FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30D20A6126540907006583FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		30D20A3A26540903006583FC = {
+			isa = PBXGroup;
+			children = (
+				30D20A4526540903006583FC /* JcampConverter */,
+				30D20A5C26540907006583FC /* JcampConverterTests */,
+				30D20A6726540907006583FC /* JcampConverterUITests */,
+				30D20A4426540903006583FC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		30D20A4426540903006583FC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				30D20A4326540903006583FC /* JcampConverter.app */,
+				30D20A5926540907006583FC /* JcampConverterTests.xctest */,
+				30D20A6426540907006583FC /* JcampConverterUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		30D20A4526540903006583FC /* JcampConverter */ = {
+			isa = PBXGroup;
+			children = (
+				30D20A4626540903006583FC /* AppDelegate.swift */,
+				30D20A4826540903006583FC /* SceneDelegate.swift */,
+				30D20A4A26540903006583FC /* ViewController.swift */,
+				30D20A4C26540903006583FC /* Main.storyboard */,
+				30D20A4F26540906006583FC /* Assets.xcassets */,
+				30D20A5126540906006583FC /* LaunchScreen.storyboard */,
+				30D20A5426540906006583FC /* Info.plist */,
+			);
+			path = JcampConverter;
+			sourceTree = "<group>";
+		};
+		30D20A5C26540907006583FC /* JcampConverterTests */ = {
+			isa = PBXGroup;
+			children = (
+				30D20A5D26540907006583FC /* JcampConverterTests.swift */,
+				30D20A5F26540907006583FC /* Info.plist */,
+			);
+			path = JcampConverterTests;
+			sourceTree = "<group>";
+		};
+		30D20A6726540907006583FC /* JcampConverterUITests */ = {
+			isa = PBXGroup;
+			children = (
+				30D20A6826540907006583FC /* JcampConverterUITests.swift */,
+				30D20A6A26540907006583FC /* Info.plist */,
+			);
+			path = JcampConverterUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		30D20A4226540903006583FC /* JcampConverter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30D20A6D26540907006583FC /* Build configuration list for PBXNativeTarget "JcampConverter" */;
+			buildPhases = (
+				30D20A3F26540903006583FC /* Sources */,
+				30D20A4026540903006583FC /* Frameworks */,
+				30D20A4126540903006583FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JcampConverter;
+			productName = JcampConverter;
+			productReference = 30D20A4326540903006583FC /* JcampConverter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		30D20A5826540907006583FC /* JcampConverterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30D20A7026540907006583FC /* Build configuration list for PBXNativeTarget "JcampConverterTests" */;
+			buildPhases = (
+				30D20A5526540907006583FC /* Sources */,
+				30D20A5626540907006583FC /* Frameworks */,
+				30D20A5726540907006583FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				30D20A5B26540907006583FC /* PBXTargetDependency */,
+			);
+			name = JcampConverterTests;
+			productName = JcampConverterTests;
+			productReference = 30D20A5926540907006583FC /* JcampConverterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		30D20A6326540907006583FC /* JcampConverterUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30D20A7326540907006583FC /* Build configuration list for PBXNativeTarget "JcampConverterUITests" */;
+			buildPhases = (
+				30D20A6026540907006583FC /* Sources */,
+				30D20A6126540907006583FC /* Frameworks */,
+				30D20A6226540907006583FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				30D20A6626540907006583FC /* PBXTargetDependency */,
+			);
+			name = JcampConverterUITests;
+			productName = JcampConverterUITests;
+			productReference = 30D20A6426540907006583FC /* JcampConverterUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		30D20A3B26540903006583FC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					30D20A4226540903006583FC = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					30D20A5826540907006583FC = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 30D20A4226540903006583FC;
+					};
+					30D20A6326540907006583FC = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 30D20A4226540903006583FC;
+					};
+				};
+			};
+			buildConfigurationList = 30D20A3E26540903006583FC /* Build configuration list for PBXProject "JcampConverter" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 30D20A3A26540903006583FC;
+			productRefGroup = 30D20A4426540903006583FC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				30D20A4226540903006583FC /* JcampConverter */,
+				30D20A5826540907006583FC /* JcampConverterTests */,
+				30D20A6326540907006583FC /* JcampConverterUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		30D20A4126540903006583FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30D20A5326540906006583FC /* LaunchScreen.storyboard in Resources */,
+				30D20A5026540906006583FC /* Assets.xcassets in Resources */,
+				30D20A4E26540903006583FC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30D20A5726540907006583FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30D20A6226540907006583FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		30D20A3F26540903006583FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30D20A4B26540903006583FC /* ViewController.swift in Sources */,
+				30D20A4726540903006583FC /* AppDelegate.swift in Sources */,
+				30D20A4926540903006583FC /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30D20A5526540907006583FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30D20A5E26540907006583FC /* JcampConverterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30D20A6026540907006583FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30D20A6926540907006583FC /* JcampConverterUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		30D20A5B26540907006583FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 30D20A4226540903006583FC /* JcampConverter */;
+			targetProxy = 30D20A5A26540907006583FC /* PBXContainerItemProxy */;
+		};
+		30D20A6626540907006583FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 30D20A4226540903006583FC /* JcampConverter */;
+			targetProxy = 30D20A6526540907006583FC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		30D20A4C26540903006583FC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30D20A4D26540903006583FC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		30D20A5126540906006583FC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30D20A5226540906006583FC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		30D20A6B26540907006583FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		30D20A6C26540907006583FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		30D20A6E26540907006583FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JcampConverter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.baolan2005.JcampConverter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		30D20A6F26540907006583FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JcampConverter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.baolan2005.JcampConverter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		30D20A7126540907006583FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JcampConverterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.baolan2005.JcampConverterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JcampConverter.app/JcampConverter";
+			};
+			name = Debug;
+		};
+		30D20A7226540907006583FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JcampConverterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.baolan2005.JcampConverterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JcampConverter.app/JcampConverter";
+			};
+			name = Release;
+		};
+		30D20A7426540907006583FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JcampConverterUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.baolan2005.JcampConverterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JcampConverter;
+			};
+			name = Debug;
+		};
+		30D20A7526540907006583FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = JcampConverterUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.baolan2005.JcampConverterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JcampConverter;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		30D20A3E26540903006583FC /* Build configuration list for PBXProject "JcampConverter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30D20A6B26540907006583FC /* Debug */,
+				30D20A6C26540907006583FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30D20A6D26540907006583FC /* Build configuration list for PBXNativeTarget "JcampConverter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30D20A6E26540907006583FC /* Debug */,
+				30D20A6F26540907006583FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30D20A7026540907006583FC /* Build configuration list for PBXNativeTarget "JcampConverterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30D20A7126540907006583FC /* Debug */,
+				30D20A7226540907006583FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30D20A7326540907006583FC /* Build configuration list for PBXNativeTarget "JcampConverterUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30D20A7426540907006583FC /* Debug */,
+				30D20A7526540907006583FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 30D20A3B26540903006583FC /* Project object */;
+}
