@@ -18,9 +18,57 @@ extension String {
         guard self.count > 0 else { return false }
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
-        guard let floatVal = numberFormatter.number(from: self) else {
+        guard let _ = numberFormatter.number(from: self) else {
             return false
         }
         return true
+    }
+    
+    var arrayNumbers: [Int] {
+        guard self.count > 0 else { return [] }
+        var result: [Int] = []
+        let pattern = "[^[0-9]+]"
+        do {
+            let regex = try NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+            let tmpStr = regex.stringByReplacingMatches(in: self, options: .withTransparentBounds, range: NSMakeRange(0, self.count), withTemplate: " ").trimmingCharacters(in: .whitespaces)
+            let tmpArr = tmpStr.split(separator: " ")
+            for i in tmpArr {
+                if let intVal = Int(i) as? Int {
+                    result.append(intVal)
+                }
+            }
+        } catch {
+            print("Cant convert")
+        }
+        return result;
+    }
+    
+    func condenseWhitespace() -> String {
+        let components = self.components(separatedBy: NSCharacterSet.whitespacesAndNewlines)
+        return components.filter { !$0.isEmpty }.joined(separator: " ")
+    }
+    
+    var length: Int {
+        return count
+    }
+
+    subscript (i: Int) -> String {
+        return self[i ..< i + 1]
+    }
+
+    func substring(fromIndex: Int) -> String {
+        return self[min(fromIndex, length) ..< length]
+    }
+
+    func substring(toIndex: Int) -> String {
+        return self[0 ..< max(0, toIndex)]
+    }
+
+    subscript (r: Range<Int>) -> String {
+        let range = Range(uncheckedBounds: (lower: max(0, min(length, r.lowerBound)),
+                                            upper: min(length, max(0, r.upperBound))))
+        let start = index(startIndex, offsetBy: range.lowerBound)
+        let end = index(start, offsetBy: range.upperBound - range.lowerBound)
+        return String(self[start ..< end])
     }
 }
