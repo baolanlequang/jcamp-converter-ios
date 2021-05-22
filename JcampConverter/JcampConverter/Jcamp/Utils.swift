@@ -72,3 +72,10 @@ extension String {
         return String(self[start ..< end])
     }
 }
+
+extension Character {
+    var isNumeric: Bool {
+        let nums: Set<Character> = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        return nums.contains(self)
+    }
+}

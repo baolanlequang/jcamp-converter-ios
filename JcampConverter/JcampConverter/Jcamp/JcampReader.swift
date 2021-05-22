@@ -14,7 +14,8 @@ class JcampReader {
         do {
             let data = try String(contentsOfFile: filePath, encoding: .utf8)
             let tmpData = data.components(separatedBy: .newlines)
-            _ = self.reading(data: tmpData)
+//            _ = self.reading(data: tmpData)
+            self.parsing(encodedString: "12T")
         }
         catch {
             print(error)
@@ -137,8 +138,22 @@ class JcampReader {
         return jcampData
     }
     
-    private func parsing(encodedString: String) -> [Int] {
-        var result = [Int]()
+    private func getValue(numStr: String, isDIF: Bool, values:[Double]) -> Double {
+        let tmpNumber = Double(numStr) ?? 0.0
+        var result = 0.0
+        if (isDIF) {
+            let lastValue = values.last ?? 0.0
+            result = Double(lastValue + tmpNumber)
+        }
+        else {
+            result = tmpNumber
+        }
+        return result
+    }
+    
+    private func parsing(encodedString: String) -> [Double] {
+        var result = [Double]()
+        var numberStr = ""
         
         var trimedStr = encodedString.trimmingCharacters(in: .whitespaces)
         trimedStr = trimedStr.condenseWhitespace()
@@ -149,16 +164,62 @@ class JcampReader {
         }
         if (filteredDUP.count > 0) {
             var newLine = ""
-            var dupVal = ""
+            var dupVal = 0
             for (index, char) in trimedStr.enumerated() {
                 if (DUP_keys.contains(String(char))) {
                     let prevChar = trimedStr[index-1]
+                    dupVal = DUP[String(char)] ?? 0
+                    if (dupVal > 0) {
+                        let charsToAppend = String(repeating: prevChar, count: dupVal)
+                        newLine.append(charsToAppend)
+                    }
                 }
                 else {
-                    dupVal = ""
+                    dupVal = 0
                     newLine.append(char)
                 }
             }
+            trimedStr = newLine
+        }
+        
+        var isDIF = false
+        for char: Character in trimedStr {
+            if ((char.isNumeric) || (char == ".")) {
+                numberStr.append(char)
+            }
+            else if (char == " ") {
+                isDIF = false
+                if (numberStr != "") {
+                    let val = self.getValue(numStr: numberStr, isDIF: isDIF, values: result)
+                    result.append(val)
+                }
+                numberStr = ""
+            }
+            else if (SQZ.keys.contains(String(char))) {
+                isDIF = false
+                if (numberStr != "") {
+                    let val = self.getValue(numStr: numberStr, isDIF: isDIF, values: result)
+                    result.append(val)
+                }
+                numberStr = SQZ[String(char)] ?? ""
+            }
+            else if (DIF.keys.contains(String(char))) {
+                isDIF = true
+                if (numberStr != "") {
+                    let val = self.getValue(numStr: numberStr, isDIF: isDIF, values: result)
+                    result.append(val)
+                }
+                numberStr = DIF[String(char)] ?? ""
+            }
+            else {
+                let error = String(format: "Unkwon character %s when parsing", String(char))
+                assertionFailure(error)
+            }
+        }
+        
+        if (numberStr != "") {
+            let val = self.getValue(numStr: numberStr, isDIF: isDIF, values: result)
+            result.append(val)
         }
         
         return result
