@@ -14,8 +14,8 @@ class JcampReader {
         do {
             let data = try String(contentsOfFile: filePath, encoding: .utf8)
             let tmpData = data.components(separatedBy: .newlines)
-//            _ = self.reading(data: tmpData)
-            self.parsing(encodedString: "12T")
+            _ = self.reading(data: tmpData)
+//            self.parsing(encodedString: "12T")
         }
         catch {
             print(error)
@@ -24,14 +24,16 @@ class JcampReader {
     
     private func reading(data: [String]) -> [String: Any] {
         
-        var dataValues = [Int]()
+        var dataValues = [Double]()
         var isCompound = false  //check is compound
         var isInCompoundBlock = false //check is in compound block
         var storedCompondContents = [String]()
         var isStartReadData = false
         var jcampData: [String: Any] = [:]
-        var arrX: [Float] = []
-        var arrY: [Float] = []
+        var arrX: [Double] = []
+        var arrY: [Double] = []
+        var arrStartOfX: [Double] = []
+        var arrNumberOfX: [Double] = []
         var trimmedKey: String? = nil
         
         for line in data {
@@ -60,7 +62,6 @@ class JcampReader {
                 
                 //detect end of compound block
                 if (trimmedLine.uppercased().hasPrefix("##END")) {
-                    //TODO: Process the entire block and put it into the children array.
                     var children = jcampData["children"] as? [[String:Any]] ?? [[String:Any]]()
                     children.append(reading(data: storedCompondContents))
                     isInCompoundBlock = false
@@ -70,7 +71,7 @@ class JcampReader {
             }
             
             var dataType: Any?
-            var dataList: [Any] = []
+            var dataList: [Double] = []
             if (trimmedLine.hasPrefix("##")) {
                 trimmedLine = trimmedLine.replacingOccurrences(of: "##", with: "")
                 print(trimmedLine)
@@ -119,20 +120,89 @@ class JcampReader {
                 }
             }
             else if (trimmedKey != nil && !isStartReadData) {
-                let newVal = "\(jcampData[trimmedKey!])\n\(trimmedLine)"
-                jcampData[trimmedKey!] = newVal
+                if let oldVal = jcampData[trimmedKey!] as? String {
+                    let newVal = "\(oldVal)\n\(trimmedLine)"
+                    jcampData[trimmedKey!] = newVal
+                }
+                
             }
             
             if (isStartReadData) {
                 if let type = dataType as? String {
                     if (type == "(X++(Y..Y))") {
-                        
+                        dataValues = self.parsing(encodedString: trimmedLine)
+                        arrStartOfX.append(dataValues[0])
+                        arrNumberOfX.append(Double(dataValues.count-1))
+                        for i in 1..<dataValues.count {
+                            let val = dataValues[i]
+                            arrY.append(val)
+                        }
+                    }
+                    else if ((jcampData.keys.contains("xypoints") || (jcampData.keys.contains("xydata"))) && type == "(XY..XY)") {
+                        let tmpArr = trimmedLine.ranges(of: "[,;\\s]", options: .regularExpression).map { trimmedLine[$0].trimmingCharacters(in: .whitespaces) }
+                        for val in tmpArr {
+                            if let val = Double(val) {
+                                dataValues.append(val)
+                            }
+                            else {
+                                continue
+                            }
+                        }
+                        for (index, val) in dataValues.enumerated() {
+                            if (index%2 == 0) {
+                                arrX.append(val)
+                            }
+                            else {
+                                arrY.append(val)
+                            }
+                        }
+                    }
+                    else if (jcampData.keys.contains("peak table") && type == "(XY..XY)") {
+                        let tmpArr = trimmedLine.ranges(of: "[,;\\s]", options: .regularExpression).map { trimmedLine[$0].trimmingCharacters(in: .whitespaces) }
+                        for val in tmpArr {
+                            if let val = Double(val) {
+                                dataValues.append(val)
+                            }
+                            else {
+                                continue
+                            }
+                        }
+                        for (index, val) in dataValues.enumerated() {
+                            if (index%2 == 0) {
+                                arrX.append(val)
+                            }
+                            else {
+                                arrY.append(val)
+                            }
+                        }
+                    }
+                    else if (dataType is Array<Any>) {
+                        dataValues = self.parsing(encodedString: trimmedLine)
+                        dataList.append(contentsOf: dataValues)
                     }
                 }
-                else {
-                    
+            }
+            
+            if let xydata = jcampData["xydata"] as? String, xydata == "(X++(Y..Y))" {
+                //TODO:
+                if let lastx = jcampData["lastx"] as? Double {
+                    arrX.append(lastx)
                 }
             }
+            else {
+                //TODO:
+            }
+            
+            if let xfactor = jcampData["xfactor"] as? Double {
+                //TODO:
+            }
+            
+            if let yfactor = jcampData["yfactor"] as? Double {
+                //TODO:
+            }
+            
+            jcampData["x"] = arrX
+            jcampData["y"] = arrY
         }
         
         return jcampData
