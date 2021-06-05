@@ -15,7 +15,8 @@ class JcampReader {
             let data = try String(contentsOfFile: filePath, encoding: .utf8)
             let tmpData = data.components(separatedBy: .newlines)
             let arrData = self.reading(data: tmpData)
-            print("arrData: \(arrData)")
+            print("arrData: \(arrData["children"])")
+            
 //            self.parsing(encodedString: "12T")
         }
         catch {
@@ -65,9 +66,10 @@ class JcampReader {
                 if (trimmedLine.uppercased().hasPrefix("##END")) {
                     var children = jcampData["children"] as? [[String:Any]] ?? [[String:Any]]()
                     children.append(reading(data: storedCompondContents))
+                    jcampData["children"] = children
                     isInCompoundBlock = false
                     storedCompondContents = []
-                    jcampData["children"] = children
+                    
                 }
                 continue
             }
@@ -103,13 +105,14 @@ class JcampReader {
                     jcampData["children"] = [[String:Any]]()
                 }
                 
-                let arrTitlePoints = ["xydata", "xypoints", "peak table"]
+                let arrTitlePoints = ["xydata", "xypoints", "peak table", "peaktable"]
                 if (arrTitlePoints.contains(trimmedKey!)) {
                     arrX = []
                     arrY = []
                     isStartReadData = true
                     dataType = trimmedVal
-                    continue
+                    print("1")
+//                    continue
                 }
                 else if (trimmedKey == "end") {
                     isStartReadData = true
@@ -229,8 +232,8 @@ class JcampReader {
                 arrY[index] = value * yfactor
             }
         }
-        jcampData["x"] = arrX
-        jcampData["y"] = arrY
+        jcampData["valueX"] = arrX
+        jcampData["valueY"] = arrY
         
         return jcampData
     }
@@ -309,8 +312,9 @@ class JcampReader {
                 numberStr = DIF[String(char)] ?? ""
             }
             else {
-                let error = String(format: "Unkwon character %s when parsing", String(char))
-                assertionFailure(error)
+                let error = String(format: "Unkwon character %@ when parsing", String(char))
+//                assertionFailure(error)
+                print(error)
             }
         }
         
