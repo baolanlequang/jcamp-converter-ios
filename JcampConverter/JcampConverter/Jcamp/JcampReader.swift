@@ -14,7 +14,8 @@ class JcampReader {
         do {
             let data = try String(contentsOfFile: filePath, encoding: .utf8)
             let tmpData = data.components(separatedBy: .newlines)
-            _ = self.reading(data: tmpData)
+            let arrData = self.reading(data: tmpData)
+            print("arrData: \(arrData)")
 //            self.parsing(encodedString: "12T")
         }
         catch {
@@ -66,6 +67,7 @@ class JcampReader {
                     children.append(reading(data: storedCompondContents))
                     isInCompoundBlock = false
                     storedCompondContents = []
+                    jcampData["children"] = children
                 }
                 continue
             }
@@ -74,7 +76,7 @@ class JcampReader {
             var dataList: [Double] = []
             if (trimmedLine.hasPrefix("##")) {
                 trimmedLine = trimmedLine.replacingOccurrences(of: "##", with: "")
-                print(trimmedLine)
+//                print(trimmedLine)
                 let keyVal = trimmedLine.split(separator: "=")
                 let key = keyVal[0]
                 var val = ""
@@ -157,7 +159,7 @@ class JcampReader {
                             }
                         }
                     }
-                    else if (jcampData.keys.contains("peak table") && type == "(XY..XY)") {
+                    else if ((jcampData.keys.contains("peak table") || jcampData.keys.contains("peaktable")) && type == "(XY..XY)") {
                         let tmpArr = trimmedLine.ranges(of: "[,;\\s]", options: .regularExpression).map { trimmedLine[$0].trimmingCharacters(in: .whitespaces) }
                         for val in tmpArr {
                             if let val = Double(val) {
@@ -182,28 +184,53 @@ class JcampReader {
                     }
                 }
             }
+        }
+        
+        if let xydata = jcampData["xydata"] as? String, xydata == "(X++(Y..Y))" {
+            if let lastx = jcampData["lastx"] as? Double {
+                arrStartOfX.append(lastx)
+            }
             
-            if let xydata = jcampData["xydata"] as? String, xydata == "(X++(Y..Y))" {
-                //TODO:
-                if let lastx = jcampData["lastx"] as? Double {
+            arrX = []
+            
+            if (arrNumberOfX.count > 0) {
+                for number in 0..<(arrNumberOfX.count-1) {
+                    let deltaX = (arrStartOfX[number+1] - arrStartOfX[number]) / arrNumberOfX[number]
+                    for val in 0..<Int(arrNumberOfX[number]) {
+                        let tmp = arrStartOfX[number] + deltaX*Double(val)
+                        arrX.append(tmp)
+                    }
+                }
+            }
+            
+            
+            if let lastx = jcampData["lastx"] as? Double {
+                if let lastNumberX = arrNumberOfX.last, lastNumberX > 1, let lastStartX = arrStartOfX.last {
+                    let deltaX = (lastx - lastStartX) / (lastNumberX-1.0)
+                    for val in 0..<Int(lastNumberX) {
+                        let tmp = lastStartX + deltaX*Double(val)
+                        arrX.append(tmp)
+                    }
+                }
+                else {
                     arrX.append(lastx)
                 }
             }
-            else {
-                //TODO:
-            }
-            
-            if let xfactor = jcampData["xfactor"] as? Double {
-                //TODO:
-            }
-            
-            if let yfactor = jcampData["yfactor"] as? Double {
-                //TODO:
-            }
-            
-            jcampData["x"] = arrX
-            jcampData["y"] = arrY
         }
+        
+        if let xfactor = jcampData["xfactor"] as? Double {
+            arrX.enumerated().forEach { index, value in
+                arrX[index] = value * xfactor
+            }
+        }
+        
+        if let yfactor = jcampData["yfactor"] as? Double {
+            arrY.enumerated().forEach { index, value in
+                arrY[index] = value * yfactor
+            }
+        }
+        jcampData["x"] = arrX
+        jcampData["y"] = arrY
         
         return jcampData
     }
