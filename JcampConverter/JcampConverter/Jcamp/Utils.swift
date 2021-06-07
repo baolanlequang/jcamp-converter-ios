@@ -33,7 +33,7 @@ extension String {
             let tmpStr = regex.stringByReplacingMatches(in: self, options: .withTransparentBounds, range: NSMakeRange(0, self.count), withTemplate: " ").trimmingCharacters(in: .whitespaces)
             let tmpArr = tmpStr.split(separator: " ")
             for i in tmpArr {
-                if let intVal = Int(i) as? Int {
+                if let intVal = Int(i) {
                     result.append(intVal)
                 }
             }
