@@ -15,6 +15,18 @@ class ViewController: UIViewController {
         
         if let path = Bundle.main.path(forResource: "1h", ofType: "jdx") {
             let reader = JcampReader(filePath: path)
+            if let jcamp = reader.jcamp {
+                if let children = jcamp.children {
+                    for (index, child) in children.enumerated() {
+                        if let data = child.data {
+                            print("child data: \(data.xValues.count), index: \(index)")
+                        }
+                    }
+                }
+            }
+            else {
+                print("no jcamp")
+            }
         }
     }
 

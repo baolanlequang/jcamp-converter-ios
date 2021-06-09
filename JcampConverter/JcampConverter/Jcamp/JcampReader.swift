@@ -8,235 +8,337 @@
 import Foundation
 
 class JcampReader {
+    
+//    var jcamp: [String:Any]? = nil
+    var jcamp: Jcamp?
+    
     init() {}
     
     init(filePath: String) {
         do {
             let data = try String(contentsOfFile: filePath, encoding: .utf8)
             let tmpData = data.components(separatedBy: .newlines)
-            let arrData = self.reading(data: tmpData)
-            print("arrData: \(arrData["children"])")
+//            jcamp = self.readingJcamp(data: tmpData)
+            self.jcamp = Jcamp(originData: tmpData)
             
-//            self.parsing(encodedString: "12T")
         }
         catch {
             print(error)
         }
     }
     
-    private func reading(data: [String]) -> [String: Any] {
-        
-        var dataValues = [Double]()
-        var isCompound = false  //check is compound
-        var isInCompoundBlock = false //check is in compound block
-        var storedCompondContents = [String]()
-        var isStartReadData = false
-        var jcampData: [String: Any] = [:]
+    
+    private func readingJcamp(data: [String]) -> [String:Any] {
+        var jcampData = [String:Any]()
+        var childBlock: [String] = []
+        var isReadingChildBlock = false
+        var blockTitle = ""
+        var isReadingData = false
+        var dataFormat = ""
+        var arrStartOfX: [Double] = []
+        var arrNumberOfX: [Int] = []
         var arrX: [Double] = []
         var arrY: [Double] = []
-        var arrStartOfX: [Double] = []
-        var arrNumberOfX: [Double] = []
-        var trimmedKey: String? = nil
-        
         for line in data {
-            var trimmedLine = line.trimmingCharacters(in: .whitespaces)
-            if (trimmedLine == "") {
+            let trimmedLine = line.trimmingCharacters(in: .whitespaces)
+            if (trimmedLine != "") {
                 //ignore empty line
-                continue
-            }
-            if (trimmedLine.hasPrefix("$$")) {
-                //ignore line start with $$
-                continue
-            }
-            
-//            print("line: \(trimmedLine)")
-            
-            //detect start of compound block
-            if (isCompound && trimmedLine.uppercased().hasPrefix("##TITLE")) {
-                isInCompoundBlock = true
-                storedCompondContents = [trimmedLine]
-                continue
-            }
-           
-            //recursive call this this function if reading compound contents
-            if (isInCompoundBlock) {
-                storedCompondContents.append(trimmedLine)
-                
-                //detect end of compound block
-                if (trimmedLine.uppercased().hasPrefix("##END")) {
-                    var children = jcampData["children"] as? [[String:Any]] ?? [[String:Any]]()
-                    children.append(reading(data: storedCompondContents))
-                    jcampData["children"] = children
-                    isInCompoundBlock = false
-                    storedCompondContents = []
-                    
-                }
-                continue
-            }
-            
-            var dataType: Any?
-            var dataList: [Double] = []
-            if (trimmedLine.hasPrefix("##")) {
-                trimmedLine = trimmedLine.replacingOccurrences(of: "##", with: "")
-//                print(trimmedLine)
-                let keyVal = trimmedLine.split(separator: "=")
-                let key = keyVal[0]
-                var val = ""
-                if (keyVal.count > 1) {
-                    val = String(keyVal[1])
-                }
-                trimmedKey = key.trimmingCharacters(in: .whitespaces).lowercased()
-                let trimmedVal = val.trimmingCharacters(in: .whitespaces)
-                
-                if (trimmedVal.isNumeric) {
-                    jcampData[trimmedKey!] = Int(trimmedVal)
-                }
-                else if (trimmedVal.isFloat) {
-                    jcampData[trimmedKey!] = Float(trimmedVal)
-                }
-                else {
-                    jcampData[trimmedKey!] = trimmedVal
-                }
-                
-                //detect compound file
-                let arrTitleDataType = ["data type", "datatype"]
-                if (arrTitleDataType.contains(trimmedKey!) && trimmedVal.lowercased() == "link") {
-                    isCompound = true
-                    jcampData["children"] = [[String:Any]]()
-                }
-                
-                let arrTitlePoints = ["xydata", "xypoints", "peak table", "peaktable"]
-                if (arrTitlePoints.contains(trimmedKey!)) {
-                    arrX = []
-                    arrY = []
-                    isStartReadData = true
-                    dataType = trimmedVal
-                    print("1")
-//                    continue
-                }
-                else if (trimmedKey == "end") {
-                    isStartReadData = true
-                    dataType = trimmedVal.arrayNumbers
-                    dataList = []
+                if (trimmedLine.hasPrefix("$$")) {
+                    isReadingChildBlock = true
+                    blockTitle = trimmedLine
                     continue
                 }
-                else if (isStartReadData) {
-                    isStartReadData = false
-                }
-            }
-            else if (trimmedKey != nil && !isStartReadData) {
-                if let oldVal = jcampData[trimmedKey!] as? String {
-                    let newVal = "\(oldVal)\n\(trimmedLine)"
-                    jcampData[trimmedKey!] = newVal
+                else if (trimmedLine.hasPrefix("##END=") && blockTitle != "") {
+                    isReadingChildBlock = false
+                    var children = jcampData["children"] as? [Any] ?? [Any]()
+                    var childBlockData = self.readingJcamp(data: childBlock)
+                    childBlockData["block_title"] = blockTitle
+                    children.append(childBlockData)
+                    jcampData["children"] = children
+                    childBlock = []
+                    blockTitle = ""
+                    continue
                 }
                 
-            }
-            
-            if (isStartReadData) {
-                if let type = dataType as? String {
-                    if (type == "(X++(Y..Y))") {
-                        dataValues = self.parsing(encodedString: trimmedLine)
-                        arrStartOfX.append(dataValues[0])
-                        arrNumberOfX.append(Double(dataValues.count-1))
-                        for i in 1..<dataValues.count {
-                            let val = dataValues[i]
-                            arrY.append(val)
-                        }
-                    }
-                    else if ((jcampData.keys.contains("xypoints") || (jcampData.keys.contains("xydata"))) && type == "(XY..XY)") {
-                        let tmpArr = trimmedLine.ranges(of: "[,;\\s]", options: .regularExpression).map { trimmedLine[$0].trimmingCharacters(in: .whitespaces) }
-                        for val in tmpArr {
-                            if let val = Double(val) {
-                                dataValues.append(val)
-                            }
-                            else {
-                                continue
-                            }
-                        }
-                        for (index, val) in dataValues.enumerated() {
-                            if (index%2 == 0) {
-                                arrX.append(val)
-                            }
-                            else {
-                                arrY.append(val)
-                            }
-                        }
-                    }
-                    else if ((jcampData.keys.contains("peak table") || jcampData.keys.contains("peaktable")) && type == "(XY..XY)") {
-                        let tmpArr = trimmedLine.ranges(of: "[,;\\s]", options: .regularExpression).map { trimmedLine[$0].trimmingCharacters(in: .whitespaces) }
-                        for val in tmpArr {
-                            if let val = Double(val) {
-                                dataValues.append(val)
-                            }
-                            else {
-                                continue
-                            }
-                        }
-                        for (index, val) in dataValues.enumerated() {
-                            if (index%2 == 0) {
-                                arrX.append(val)
-                            }
-                            else {
-                                arrY.append(val)
-                            }
-                        }
-                    }
-                    else if (dataType is Array<Any>) {
-                        dataValues = self.parsing(encodedString: trimmedLine)
-                        dataList.append(contentsOf: dataValues)
-                    }
-                }
-            }
-        }
-        
-        if let xydata = jcampData["xydata"] as? String, xydata == "(X++(Y..Y))" {
-            if let lastx = jcampData["lastx"] as? Double {
-                arrStartOfX.append(lastx)
-            }
-            
-            arrX = []
-            
-            if (arrNumberOfX.count > 0) {
-                for number in 0..<(arrNumberOfX.count-1) {
-                    let deltaX = (arrStartOfX[number+1] - arrStartOfX[number]) / arrNumberOfX[number]
-                    for val in 0..<Int(arrNumberOfX[number]) {
-                        let tmp = arrStartOfX[number] + deltaX*Double(val)
-                        arrX.append(tmp)
-                    }
-                }
-            }
-            
-            
-            if let lastx = jcampData["lastx"] as? Double {
-                if let lastNumberX = arrNumberOfX.last, lastNumberX > 1, let lastStartX = arrStartOfX.last {
-                    let deltaX = (lastx - lastStartX) / (lastNumberX-1.0)
-                    for val in 0..<Int(lastNumberX) {
-                        let tmp = lastStartX + deltaX*Double(val)
-                        arrX.append(tmp)
-                    }
+                if (isReadingChildBlock) {
+                    childBlock.append(trimmedLine)
                 }
                 else {
-                    arrX.append(lastx)
+                    if (trimmedLine.hasPrefix("##")) {
+                        let clearLine = trimmedLine.replacingOccurrences(of: "##", with: "")
+                        let arrKeysValues = clearLine.split(separator: "=")
+                        let lhs = String(arrKeysValues[0]).lowercased()
+                        var rhs = ""
+                        if (arrKeysValues.count > 1) {
+                            rhs = String(arrKeysValues[1])
+                        }
+        //                print("lhs: \(lhs), rhs: \(rhs)")
+                        jcampData[lhs] = rhs
+                        let arrTitleData = ["xydata"]
+                        if (arrTitleData.contains(lhs)) {
+                            isReadingData = true
+                            dataFormat = rhs.trimmingCharacters(in: .whitespaces)
+                        }
+                        else {
+                            isReadingData = false
+                            dataFormat = ""
+                        }
+                    }
+                    else {
+                        if (isReadingData) {
+                            if (dataFormat == "(X++(Y..Y))") {
+                                let dataValues = self.parsing(encodedString: line)
+        //                        print("datavalues: \(dataValues)")
+                                arrStartOfX.append(dataValues[0])
+                                arrNumberOfX.append(dataValues.count-1)
+                                for i in 1..<dataValues.count {
+                                    arrY.append(dataValues[i])
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if (arrStartOfX.count > 0) {
+            for index in 0..<arrStartOfX.count-1 {
+                let lastX = arrStartOfX[index+1]
+                let firstX = arrStartOfX[index]
+                let npoints = arrNumberOfX[index]
+                let deltaX = (lastX-firstX)/Double(npoints)
+                for val in 0..<npoints {
+                    let xValue = firstX + deltaX*Double(val)
+                    arrX.append(xValue)
                 }
             }
         }
         
-        if let xfactor = jcampData["xfactor"] as? Double {
-            arrX.enumerated().forEach { index, value in
-                arrX[index] = value * xfactor
-            }
-        }
         
-        if let yfactor = jcampData["yfactor"] as? Double {
-            arrY.enumerated().forEach { index, value in
-                arrY[index] = value * yfactor
-            }
+        
+//        jcampData["data"] = ["xValues": arrX, "yValues": arrY]
+        if (arrX.count > 0) {
+            jcampData["data"] = ["xValues": arrX, "yValues": arrY]
         }
-        jcampData["valueX"] = arrX
-        jcampData["valueY"] = arrY
+        else {
+            jcampData["data"] = nil
+        }
         
         return jcampData
     }
+    
+//    private func reading(data: [String]) -> [String: Any] {
+//
+//        var dataValues = [Double]()
+//        var isCompound = false  //check is compound
+//        var isInCompoundBlock = false //check is in compound block
+//        var storedCompondContents = [String]()
+//        var isStartReadData = false
+//        var jcampData: [String: Any] = [:]
+//        var arrX: [Double] = []
+//        var arrY: [Double] = []
+//        var arrStartOfX: [Double] = []
+//        var arrNumberOfX: [Double] = []
+//        var trimmedKey: String? = nil
+//
+//        for line in data {
+//            var trimmedLine = line.trimmingCharacters(in: .whitespaces)
+//            if (trimmedLine == "") {
+//                //ignore empty line
+//                continue
+//            }
+//            if (trimmedLine.hasPrefix("$$")) {
+//                //ignore line start with $$
+//                continue
+//            }
+//
+////            print("line: \(trimmedLine)")
+//
+//            //detect start of compound block
+//            if (isCompound && trimmedLine.uppercased().hasPrefix("##TITLE")) {
+//                isInCompoundBlock = true
+//                storedCompondContents = [trimmedLine]
+//                continue
+//            }
+//
+//            //recursive call this this function if reading compound contents
+//            if (isInCompoundBlock) {
+//                storedCompondContents.append(trimmedLine)
+//
+//                //detect end of compound block
+//                if (trimmedLine.uppercased().hasPrefix("##END")) {
+//                    var children = jcampData["children"] as? [[String:Any]] ?? [[String:Any]]()
+//                    children.append(reading(data: storedCompondContents))
+//                    jcampData["children"] = children
+//                    isInCompoundBlock = false
+//                    storedCompondContents = []
+//                }
+//                continue
+//            }
+//
+//            var dataType: Any?
+//            var dataList: [Double] = []
+//            if (trimmedLine.hasPrefix("##")) {
+//                trimmedLine = trimmedLine.replacingOccurrences(of: "##", with: "")
+////                print(trimmedLine)
+//                let keyVal = trimmedLine.split(separator: "=")
+//                let key = keyVal[0]
+//                var val = ""
+//                if (keyVal.count > 1) {
+//                    val = String(keyVal[1])
+//                }
+//                trimmedKey = key.trimmingCharacters(in: .whitespaces).lowercased()
+//                let trimmedVal = val.trimmingCharacters(in: .whitespaces)
+//
+//                if (trimmedVal.isNumeric) {
+//                    jcampData[trimmedKey!] = Int(trimmedVal)
+//                }
+//                else if (trimmedVal.isFloat) {
+//                    jcampData[trimmedKey!] = Float(trimmedVal)
+//                }
+//                else {
+//                    jcampData[trimmedKey!] = trimmedVal
+//                }
+//
+//                //detect compound file
+//                let arrTitleDataType = ["data type", "datatype"]
+//                if (arrTitleDataType.contains(trimmedKey!) && trimmedVal.lowercased() == "link") {
+//                    isCompound = true
+//                    jcampData["children"] = [[String:Any]]()
+//                }
+//
+//                let arrTitlePoints = ["xydata", "xypoints", "peak table", "peaktable"]
+//                if (arrTitlePoints.contains(trimmedKey!)) {
+//                    arrX = []
+//                    arrY = []
+//                    isStartReadData = true
+//                    dataType = trimmedVal
+//                    print("1")
+////                    continue
+//                }
+//                else if (trimmedKey == "end") {
+//                    isStartReadData = true
+//                    dataType = trimmedVal.arrayNumbers
+//                    dataList = []
+//                    continue
+//                }
+//                else if (isStartReadData) {
+//                    isStartReadData = false
+//                }
+//            }
+//            else if (trimmedKey != nil && !isStartReadData) {
+//                if let oldVal = jcampData[trimmedKey!] as? String {
+//                    let newVal = "\(oldVal)\n\(trimmedLine)"
+//                    jcampData[trimmedKey!] = newVal
+//                }
+//
+//            }
+//
+//            if (isStartReadData) {
+//                if let type = dataType as? String {
+//                    if (type == "(X++(Y..Y))") {
+//                        dataValues = self.parsing(encodedString: trimmedLine)
+//                        arrStartOfX.append(dataValues[0])
+//                        arrNumberOfX.append(Double(dataValues.count-1))
+//                        for i in 1..<dataValues.count {
+//                            let val = dataValues[i]
+//                            arrY.append(val)
+//                        }
+//                    }
+//                    else if ((jcampData.keys.contains("xypoints") || (jcampData.keys.contains("xydata"))) && type == "(XY..XY)") {
+//                        let tmpArr = trimmedLine.ranges(of: "[,;\\s]", options: .regularExpression).map { trimmedLine[$0].trimmingCharacters(in: .whitespaces) }
+//                        for val in tmpArr {
+//                            if let val = Double(val) {
+//                                dataValues.append(val)
+//                            }
+//                            else {
+//                                continue
+//                            }
+//                        }
+//                        for (index, val) in dataValues.enumerated() {
+//                            if (index%2 == 0) {
+//                                arrX.append(val)
+//                            }
+//                            else {
+//                                arrY.append(val)
+//                            }
+//                        }
+//                    }
+//                    else if ((jcampData.keys.contains("peak table") || jcampData.keys.contains("peaktable")) && type == "(XY..XY)") {
+//                        let tmpArr = trimmedLine.ranges(of: "[,;\\s]", options: .regularExpression).map { trimmedLine[$0].trimmingCharacters(in: .whitespaces) }
+//                        for val in tmpArr {
+//                            if let val = Double(val) {
+//                                dataValues.append(val)
+//                            }
+//                            else {
+//                                continue
+//                            }
+//                        }
+//                        for (index, val) in dataValues.enumerated() {
+//                            if (index%2 == 0) {
+//                                arrX.append(val)
+//                            }
+//                            else {
+//                                arrY.append(val)
+//                            }
+//                        }
+//                    }
+//                    else if (dataType is Array<Any>) {
+//                        dataValues = self.parsing(encodedString: trimmedLine)
+//                        dataList.append(contentsOf: dataValues)
+//                    }
+//                }
+//            }
+//        }
+//
+//        if let xydata = jcampData["xydata"] as? String, xydata == "(X++(Y..Y))" {
+//            if let lastx = jcampData["lastx"] as? Double {
+//                arrStartOfX.append(lastx)
+//            }
+//
+//            arrX = []
+//
+//            if (arrNumberOfX.count > 0) {
+//                for number in 0..<(arrNumberOfX.count-1) {
+//                    let deltaX = (arrStartOfX[number+1] - arrStartOfX[number]) / arrNumberOfX[number]
+//                    for val in 0..<Int(arrNumberOfX[number]) {
+//                        let tmp = arrStartOfX[number] + deltaX*Double(val)
+//                        arrX.append(tmp)
+//                    }
+//                }
+//            }
+//
+//
+//            if let lastx = jcampData["lastx"] as? Double {
+//                if let lastNumberX = arrNumberOfX.last, lastNumberX > 1, let lastStartX = arrStartOfX.last {
+//                    let deltaX = (lastx - lastStartX) / (lastNumberX-1.0)
+//                    for val in 0..<Int(lastNumberX) {
+//                        let tmp = lastStartX + deltaX*Double(val)
+//                        arrX.append(tmp)
+//                    }
+//                }
+//                else {
+//                    arrX.append(lastx)
+//                }
+//            }
+//        }
+//
+//        if let xfactor = jcampData["xfactor"] as? Double {
+//            arrX.enumerated().forEach { index, value in
+//                arrX[index] = value * xfactor
+//            }
+//        }
+//
+//        if let yfactor = jcampData["yfactor"] as? Double {
+//            arrY.enumerated().forEach { index, value in
+//                arrY[index] = value * yfactor
+//            }
+//        }
+//        jcampData["valueX"] = arrX
+//        jcampData["valueY"] = arrY
+//
+//        return jcampData
+//    }
     
     private func getValue(numStr: String, isDIF: Bool, values:[Double]) -> Double {
         let tmpNumber = Double(numStr) ?? 0.0

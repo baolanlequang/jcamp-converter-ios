@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		307968FF2654698600853864 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307968FE2654698600853864 /* Utils.swift */; };
+		30B6374B2670F84B004FC121 /* Jcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B6374A2670F84B004FC121 /* Jcamp.swift */; };
 		30D20A4726540903006583FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D20A4626540903006583FC /* AppDelegate.swift */; };
 		30D20A4926540903006583FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D20A4826540903006583FC /* SceneDelegate.swift */; };
 		30D20A4B26540903006583FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D20A4A26540903006583FC /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		307968FE2654698600853864 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		30B6374A2670F84B004FC121 /* Jcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jcamp.swift; sourceTree = "<group>"; };
 		30D20A4326540903006583FC /* JcampConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JcampConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D20A4626540903006583FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30D20A4826540903006583FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			children = (
 				30D20A772654097D006583FC /* Constants.swift */,
 				30D20A7926540C7D006583FC /* JcampReader.swift */,
+				30B6374A2670F84B004FC121 /* Jcamp.swift */,
 				307968FE2654698600853864 /* Utils.swift */,
 			);
 			path = Jcamp;
@@ -285,6 +288,7 @@
 				30D20A4926540903006583FC /* SceneDelegate.swift in Sources */,
 				30D20A782654097D006583FC /* Constants.swift in Sources */,
 				307968FF2654698600853864 /* Utils.swift in Sources */,
+				30B6374B2670F84B004FC121 /* Jcamp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
