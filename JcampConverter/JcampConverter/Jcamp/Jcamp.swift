@@ -133,28 +133,31 @@ class Jcamp {
             }
         }
         
-        if let lastx = self.dicData["lastx"] as? Double {
-            if let lastNumberX = arrNumberOfX.last, lastNumberX > 1, let lastStartX = arrStartOfX.last {
-                let deltaX = (lastx - lastStartX) / (Double(lastNumberX)-1.0)
-                for val in 0..<Int(lastNumberX) {
-                    let tmp = lastStartX + deltaX*Double(val)
-                    arrX.append(tmp)
+        if let lastx = self.dicData["lastx"] as? String, let lastXValue = Double(lastx) {
+            let lastIndex = arrStartOfX.count-1
+            let firstX = arrStartOfX[lastIndex]
+            if (firstX > 1) {
+                let npoints = arrNumberOfX[lastIndex]
+                let deltaX = (lastXValue-firstX)/Double(npoints)
+                for val in 0..<npoints {
+                    let xValue = firstX + deltaX*Double(val)
+                    arrX.append(xValue)
                 }
             }
             else {
-                arrX.append(lastx)
+                arrX.append(lastXValue)
             }
         }
         
-        if let xfactor = self.dicData["xfactor"] as? Double {
+        if let xfactor = self.dicData["xfactor"] as? String, let xfactorValue = Double(xfactor) {
             arrX.enumerated().forEach { index, value in
-                arrX[index] = value * xfactor
+                arrX[index] = value * xfactorValue
             }
         }
 
-        if let yfactor = self.dicData["yfactor"] as? Double {
+        if let yfactor = self.dicData["yfactor"] as? String, let yfactorValue = Double(yfactor) {
             arrY.enumerated().forEach { index, value in
-                arrY[index] = value * yfactor
+                arrY[index] = value * yfactorValue
             }
         }
         
