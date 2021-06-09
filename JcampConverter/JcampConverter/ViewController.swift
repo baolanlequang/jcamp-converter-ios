@@ -19,7 +19,8 @@ class ViewController: UIViewController {
                 if let children = jcamp.children {
                     for (index, child) in children.enumerated() {
                         if let data = child.data {
-                            print("child data: \(data.xValues.count), index: \(index)")
+                            print("child data x: \(data.xValues.count), index: \(index)")
+                            print("child data y: \(data.yValues.count), index: \(index)")
                         }
                     }
                 }
