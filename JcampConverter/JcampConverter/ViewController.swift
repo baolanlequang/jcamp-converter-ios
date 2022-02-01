@@ -13,24 +13,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        if let path = Bundle.main.path(forResource: "1h", ofType: "jdx") {
+        if let path = Bundle.main.path(forResource: "test_file_19", ofType: "dx") {
             let reader = JcampReader(filePath: path)
-            if let jcamp = reader.jcamp {
-                if let children = jcamp.children {
-                    for (index, child) in children.enumerated() {
-                        if let data = child.data {
-                            print("child data x: \(data.xValues.count), index: \(index)")
-                            print("child data y: \(data.yValues.count), index: \(index)")
-                        }
-                    }
-                }
-            }
-            else {
-                print("no jcamp")
-            }
         }
+        else {
+            print("file not found")
+        }
+        
     }
-
-
 }
 
