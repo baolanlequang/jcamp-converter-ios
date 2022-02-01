@@ -1,5 +1,5 @@
 //
-//  Utils.swift
+//  Utilities.swift
 //  JcampConverter
 //
 //  Created by Bao Lan Le Quang on 18/05/2021.

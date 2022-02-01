@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		307968FF2654698600853864 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307968FE2654698600853864 /* Utils.swift */; };
+		307968FF2654698600853864 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307968FE2654698600853864 /* Utilities.swift */; };
 		308FFCA82724330E00970CD3 /* test_file_15.dx in Resources */ = {isa = PBXBuildFile; fileRef = 308FFC932724330E00970CD3 /* test_file_15.dx */; };
 		308FFCAA2724330E00970CD3 /* test_file_4_failed.dx in Resources */ = {isa = PBXBuildFile; fileRef = 308FFC952724330E00970CD3 /* test_file_4_failed.dx */; };
 		308FFCAB2724330E00970CD3 /* test_file_11.dx in Resources */ = {isa = PBXBuildFile; fileRef = 308FFC962724330E00970CD3 /* test_file_11.dx */; };
@@ -61,7 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		307968FE2654698600853864 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		307968FE2654698600853864 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		308FFC932724330E00970CD3 /* test_file_15.dx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_file_15.dx; sourceTree = "<group>"; };
 		308FFC952724330E00970CD3 /* test_file_4_failed.dx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_file_4_failed.dx; sourceTree = "<group>"; };
 		308FFC962724330E00970CD3 /* test_file_11.dx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_file_11.dx; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 		30A9A1B427215967008E3D71 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				307968FE2654698600853864 /* Utils.swift */,
+				307968FE2654698600853864 /* Utilities.swift */,
 				30A9A1B527215984008E3D71 /* Stack.swift */,
 			);
 			path = Utils;
@@ -395,7 +395,7 @@
 				30D20A4926540903006583FC /* SceneDelegate.swift in Sources */,
 				30A9A1B627215984008E3D71 /* Stack.swift in Sources */,
 				30D20A782654097D006583FC /* Constants.swift in Sources */,
-				307968FF2654698600853864 /* Utils.swift in Sources */,
+				307968FF2654698600853864 /* Utilities.swift in Sources */,
 				30B6374B2670F84B004FC121 /* JcampBackup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
