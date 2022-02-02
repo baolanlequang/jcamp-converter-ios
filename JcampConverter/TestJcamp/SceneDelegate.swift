@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  JcampConverter
+//  TestJcamp
 //
-//  Created by Bao Lan Le Quang on 18/05/2021.
+//  Created by Lan Le on 02.02.22.
 //
 
 import UIKit

@@ -2,38 +2,38 @@
 //  Jcamp.swift
 //  JcampConverter
 //
-//  Created by Bao Lan Le Quang on 21/10/2021.
+//  Created by Lan Le on 02.02.22.
 //
 
 import Foundation
 
-class Jcamp {
+public class Jcamp {
     
     private let arrTitleData = ["xydata", "peaktable", "peak table", "xypoints", "data table"]
     private let arrTypeDataXPlusY = ["(X++(Y..Y)", "(X++(R..R)", "(X++(I..I)"]
     private let arrTypeDataXY = ["(XY..XY)"]
     
-    var children: [Jcamp]?
+    public var children: [Jcamp]?
     
-    struct Spectra {
-        var xValues: [Double]
-        var yValues: [Double]
-        var isReal = true
+    public struct Spectra {
+        public var xValues: [Double]
+        public var yValues: [Double]
+        public var isReal = true
     }
     
-    var spectra: [Spectra] = []
-    var dicData: [String: Any] = [:]
+    public var spectra: [Spectra] = []
+    public var dicData: [String: Any] = [:]
     
-    var hasChild: Bool {
+    public var hasChild: Bool {
         guard let childr = self.children else {
             return false
         }
         return childr.count > 0
     }
     
-    init() {}
+    public init() {}
     
-    init(originData: [Any]) {
+    public init(originData: [Any]) {
         var arrStartOfX = [Double]()
         var arrNumberOfX = [Int]()
         

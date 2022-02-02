@@ -2,13 +2,13 @@
 //  Utilities.swift
 //  JcampConverter
 //
-//  Created by Bao Lan Le Quang on 18/05/2021.
+//  Created by Lan Le on 02.02.22.
 //
 
 import Foundation
 
 extension String {
-    var isNumeric: Bool {
+    var isNumeric: Bool! {
         guard self.count > 0 else { return false }
         let nums: Set<Character> = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
         return Set(self).isSubset(of: nums)
@@ -88,7 +88,7 @@ extension String {
 }
 
 extension Character {
-    var isNumeric: Bool {
+    var isNumeric: Bool! {
         let nums: Set<Character> = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
         return nums.contains(self)
     }
