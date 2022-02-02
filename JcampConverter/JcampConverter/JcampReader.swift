@@ -2,18 +2,18 @@
 //  JcampReader.swift
 //  JcampConverter
 //
-//  Created by Bao Lan Le Quang on 18/05/2021.
+//  Created by Lan Le on 02.02.22.
 //
 
 import Foundation
 
-class JcampReader {
+public class JcampReader {
     
-    var jcamp: Jcamp?
+    public var jcamp: Jcamp?
     
-    init() {}
+    public init() {}
     
-    init(filePath: String) {
+    public init(filePath: String) {
         do {
             let data = try String(contentsOfFile: filePath, encoding: .ascii)
             let tmpData = data.components(separatedBy: .newlines)

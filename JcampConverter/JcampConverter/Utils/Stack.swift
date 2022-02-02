@@ -2,7 +2,7 @@
 //  Stack.swift
 //  JcampConverter
 //
-//  Created by Bao Lan Le Quang on 21/10/2021.
+//  Created by Lan Le on 02.02.22.
 //
 
 import Foundation

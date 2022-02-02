@@ -1,13 +1,13 @@
 //
-//  JcampConverterUITests.swift
-//  JcampConverterUITests
+//  TestJcampUITests.swift
+//  TestJcampUITests
 //
-//  Created by Bao Lan Le Quang on 18/05/2021.
+//  Created by Lan Le on 02.02.22.
 //
 
 import XCTest
 
-class JcampConverterUITests: XCTestCase {
+class TestJcampUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
