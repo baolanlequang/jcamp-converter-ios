@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "JcampConverter"
-  spec.version      = "0.0.4"
+  spec.version      = "0.0.5"
   spec.summary      = "Jcamp Reader for iOS"
   spec.swift_versions   = ['4.0', '5.0', '5.5']
 
@@ -92,7 +92,7 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "JcampConverter/JcampConverter/**/*.{h,m,swift}"
+  spec.source_files  = "JcampConverter/JcampConverter/*.{h,m,swift}", "JcampConverter/JcampConverter/Utils/*.{h,m,swift}"
   spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
