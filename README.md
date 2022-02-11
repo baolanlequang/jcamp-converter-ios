@@ -5,31 +5,41 @@
 **MoJcampConverter** is released as dependency package on [CocoaPods](https://cocoapods.org/). 
 
 ### 1. Add *MoJcampConverter* to your project
-**1.1. Setting up *cocoapods* **
+1.1. Setting up *cocoapods*
+
 You can by pass this step if your project is using *cocoapods*.
 
 Open your terminal, navigate to the project's location and type
 
-`pod init`
+```
+pod init
+```
 
-**1.2. Add *MoJcampConverter* **
-Open ==Podfile== and add
-`pod 'JcampConverter', '~> 0.0.5'`
+1.2. Add *MoJcampConverter*
+
+
+Open `Podfile` and add
+
+```
+pod 'JcampConverter', '~> 0.0.5'
+```
  
 Open your terminal, navigate to the project's location and the following commad to install *MoJcampConverter* to your project.
 
-`pod install`
+```
+pod install
+```
 
 ### 2. Using *MoJcampConverter*
 Open your `<Project_Name>.xcworkspace`
 
-**2.1. Import *MoJcampConverter* **
+2.1. Import *MoJcampConverter*
 
 ```swift
 import JcampConverter
 ```
 
-**2.2. Using the converter **
+2.2. Using the converter
 ```swift
 let reader = JcampReader(filePath: path)
 
