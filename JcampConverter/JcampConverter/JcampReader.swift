@@ -25,6 +25,29 @@ public class JcampReader {
         }
     }
     
+    public init(url: String) {
+        if let fileURL = URL(string: url) {
+            do {
+                let data = try String(contentsOf: fileURL)
+                let tmpData = data.components(separatedBy: .newlines)
+                let structuredData = self.parsingStructure(data: tmpData)
+                self.jcamp = Jcamp(originData: structuredData)
+            }
+            catch {
+                print(error)
+            }
+        }
+        else {
+            print("cannot find url")
+        }
+    }
+    
+    public init(stringData: String) {
+        let data = stringData.components(separatedBy: .newlines)
+        let structuredData = self.parsingStructure(data: data)
+        self.jcamp = Jcamp(originData: structuredData)
+    }
+    
     private func popChildBlock(param: inout (stack: [Any], queue: [Any])) {
         var (stack, queue) = param
         var topStack = stack.peak() as? String
