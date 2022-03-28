@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA59EAAB27F2124100897BA7 /* JcampConverter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6EB8EB27AAB8C500738161 /* JcampConverter.framework */; };
+		FA59EAAC27F2124100897BA7 /* JcampConverter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FA6EB8EB27AAB8C500738161 /* JcampConverter.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FA59EAB127F2144E00897BA7 /* RCV_LSH-R444_full+Fc.jdx in Resources */ = {isa = PBXBuildFile; fileRef = FA59EAB027F2144E00897BA7 /* RCV_LSH-R444_full+Fc.jdx */; };
 		FA6EB8F027AAB8C500738161 /* JcampConverter.docc in Sources */ = {isa = PBXBuildFile; fileRef = FA6EB8EF27AAB8C500738161 /* JcampConverter.docc */; };
 		FA6EB8F627AAB8C500738161 /* JcampConverter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6EB8EB27AAB8C500738161 /* JcampConverter.framework */; };
 		FA6EB8FB27AAB8C500738161 /* JcampConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6EB8FA27AAB8C500738161 /* JcampConverterTests.swift */; };
@@ -25,8 +28,6 @@
 		FA6EB9C427AAC41500738161 /* TestJcampTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6EB9C327AAC41500738161 /* TestJcampTests.swift */; };
 		FA6EB9CE27AAC41500738161 /* TestJcampUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6EB9CD27AAC41500738161 /* TestJcampUITests.swift */; };
 		FA6EB9D027AAC41500738161 /* TestJcampUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6EB9CF27AAC41500738161 /* TestJcampUITestsLaunchTests.swift */; };
-		FA6EB9DE27AAC52C00738161 /* JcampConverter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6EB8EB27AAB8C500738161 /* JcampConverter.framework */; };
-		FA6EB9DF27AAC52C00738161 /* JcampConverter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FA6EB8EB27AAB8C500738161 /* JcampConverter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FA6EB9FA27AAC98E00738161 /* test_file_20.dx in Resources */ = {isa = PBXBuildFile; fileRef = FA6EB9E627AAC98E00738161 /* test_file_20.dx */; };
 		FA6EB9FB27AAC98E00738161 /* test_file_1.dx in Resources */ = {isa = PBXBuildFile; fileRef = FA6EB9E727AAC98E00738161 /* test_file_1.dx */; };
 		FA6EB9FC27AAC98E00738161 /* test_file_5.dx in Resources */ = {isa = PBXBuildFile; fileRef = FA6EB9E827AAC98E00738161 /* test_file_5.dx */; };
@@ -50,6 +51,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		FA59EAAD27F2124100897BA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA6EB8E227AAB8C500738161 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA6EB8EA27AAB8C500738161;
+			remoteInfo = JcampConverter;
+		};
 		FA6EB8F727AAB8C500738161 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA6EB8E227AAB8C500738161 /* Project object */;
@@ -74,13 +82,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		FA6EB9E027AAC52C00738161 /* Embed Frameworks */ = {
+		FA59EAAF27F2124100897BA7 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FA6EB9DF27AAC52C00738161 /* JcampConverter.framework in Embed Frameworks */,
+				FA59EAAC27F2124100897BA7 /* JcampConverter.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,6 +96,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FA59EAB027F2144E00897BA7 /* RCV_LSH-R444_full+Fc.jdx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "RCV_LSH-R444_full+Fc.jdx"; sourceTree = "<group>"; };
 		FA6EB8EB27AAB8C500738161 /* JcampConverter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JcampConverter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA6EB8EE27AAB8C500738161 /* JcampConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JcampConverter.h; sourceTree = "<group>"; };
 		FA6EB8EF27AAB8C500738161 /* JcampConverter.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = JcampConverter.docc; sourceTree = "<group>"; };
@@ -153,7 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA6EB9DE27AAC52C00738161 /* JcampConverter.framework in Frameworks */,
+				FA59EAAB27F2124100897BA7 /* JcampConverter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +298,7 @@
 				FA6EB9F327AAC98E00738161 /* test_file_16.dx */,
 				FA6EB9ED27AAC98E00738161 /* test_file_17.dx */,
 				FA6EB9F427AAC98E00738161 /* test_file_18.dx */,
+				FA59EAB027F2144E00897BA7 /* RCV_LSH-R444_full+Fc.jdx */,
 				FA6EB9EF27AAC98E00738161 /* test_file_19.dx */,
 				FA6EB9E627AAC98E00738161 /* test_file_20.dx */,
 			);
@@ -352,11 +362,12 @@
 				FA6EB9A627AAC41400738161 /* Sources */,
 				FA6EB9A727AAC41400738161 /* Frameworks */,
 				FA6EB9A827AAC41400738161 /* Resources */,
-				FA6EB9E027AAC52C00738161 /* Embed Frameworks */,
+				FA59EAAF27F2124100897BA7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FA59EAAE27F2124100897BA7 /* PBXTargetDependency */,
 			);
 			name = TestJcamp;
 			productName = TestJcamp;
@@ -491,6 +502,7 @@
 				FA6EBA0927AAC98E00738161 /* test_file_10.dx in Resources */,
 				FA6EBA0327AAC98E00738161 /* test_file_19.dx in Resources */,
 				FA6EBA0127AAC98E00738161 /* test_file_17.dx in Resources */,
+				FA59EAB127F2144E00897BA7 /* RCV_LSH-R444_full+Fc.jdx in Resources */,
 				FA6EBA0C27AAC98F00738161 /* test_file_11.dx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,6 +575,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		FA59EAAE27F2124100897BA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA6EB8EA27AAB8C500738161 /* JcampConverter */;
+			targetProxy = FA59EAAD27F2124100897BA7 /* PBXContainerItemProxy */;
+		};
 		FA6EB8F827AAB8C500738161 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FA6EB8EA27AAB8C500738161 /* JcampConverter */;
