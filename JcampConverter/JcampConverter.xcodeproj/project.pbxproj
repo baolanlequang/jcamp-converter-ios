@@ -48,6 +48,21 @@
 		FA6EBA0B27AAC98F00738161 /* test_file_2.dx in Resources */ = {isa = PBXBuildFile; fileRef = FA6EB9F727AAC98E00738161 /* test_file_2.dx */; };
 		FA6EBA0C27AAC98F00738161 /* test_file_11.dx in Resources */ = {isa = PBXBuildFile; fileRef = FA6EB9F827AAC98E00738161 /* test_file_11.dx */; };
 		FA6EBA0D27AAC98F00738161 /* test_file_6.dx in Resources */ = {isa = PBXBuildFile; fileRef = FA6EB9F927AAC98E00738161 /* test_file_6.dx */; };
+		FABAECDF27FA2CC200E185F6 /* File033_nmr_31P.jdx in Resources */ = {isa = PBXBuildFile; fileRef = FABAECD027FA2CC200E185F6 /* File033_nmr_31P.jdx */; };
+		FABAECE027FA2CC200E185F6 /* File012.dx in Resources */ = {isa = PBXBuildFile; fileRef = FABAECD127FA2CC200E185F6 /* File012.dx */; };
+		FABAECE127FA2CC200E185F6 /* File025_1mM_THF_Ex_550nm005.DX in Resources */ = {isa = PBXBuildFile; fileRef = FABAECD227FA2CC200E185F6 /* File025_1mM_THF_Ex_550nm005.DX */; };
+		FABAECE227FA2CC200E185F6 /* File035_nmr_15N.jdx in Resources */ = {isa = PBXBuildFile; fileRef = FABAECD327FA2CC200E185F6 /* File035_nmr_15N.jdx */; };
+		FABAECE327FA2CC200E185F6 /* File010.JDX in Resources */ = {isa = PBXBuildFile; fileRef = FABAECD427FA2CC200E185F6 /* File010.JDX */; };
+		FABAECE427FA2CC200E185F6 /* File004.jdx in Resources */ = {isa = PBXBuildFile; fileRef = FABAECD527FA2CC200E185F6 /* File004.jdx */; };
+		FABAECE527FA2CC200E185F6 /* File006.jdx in Resources */ = {isa = PBXBuildFile; fileRef = FABAECD627FA2CC200E185F6 /* File006.jdx */; };
+		FABAECE627FA2CC200E185F6 /* File019_RWTH_Jasco_V770.dx in Resources */ = {isa = PBXBuildFile; fileRef = FABAECD727FA2CC200E185F6 /* File019_RWTH_Jasco_V770.dx */; };
+		FABAECE727FA2CC200E185F6 /* File042.jdx in Resources */ = {isa = PBXBuildFile; fileRef = FABAECD827FA2CC200E185F6 /* File042.jdx */; };
+		FABAECE827FA2CC200E185F6 /* File034_nmr_29Si.jdx in Resources */ = {isa = PBXBuildFile; fileRef = FABAECD927FA2CC200E185F6 /* File034_nmr_29Si.jdx */; };
+		FABAECE927FA2CC200E185F6 /* File046.jdx in Resources */ = {isa = PBXBuildFile; fileRef = FABAECDA27FA2CC200E185F6 /* File046.jdx */; };
+		FABAECEA27FA2CC200E185F6 /* File045.jdx in Resources */ = {isa = PBXBuildFile; fileRef = FABAECDB27FA2CC200E185F6 /* File045.jdx */; };
+		FABAECEB27FA2CC200E185F6 /* File032_LCMS.jdx in Resources */ = {isa = PBXBuildFile; fileRef = FABAECDC27FA2CC200E185F6 /* File032_LCMS.jdx */; };
+		FABAECEC27FA2CC200E185F6 /* File009.jdx in Resources */ = {isa = PBXBuildFile; fileRef = FABAECDD27FA2CC200E185F6 /* File009.jdx */; };
+		FABAECED27FA2CC200E185F6 /* File011.dx in Resources */ = {isa = PBXBuildFile; fileRef = FABAECDE27FA2CC200E185F6 /* File011.dx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +155,21 @@
 		FA6EB9F727AAC98E00738161 /* test_file_2.dx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_file_2.dx; sourceTree = "<group>"; };
 		FA6EB9F827AAC98E00738161 /* test_file_11.dx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_file_11.dx; sourceTree = "<group>"; };
 		FA6EB9F927AAC98E00738161 /* test_file_6.dx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_file_6.dx; sourceTree = "<group>"; };
+		FABAECD027FA2CC200E185F6 /* File033_nmr_31P.jdx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File033_nmr_31P.jdx; sourceTree = "<group>"; };
+		FABAECD127FA2CC200E185F6 /* File012.dx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File012.dx; sourceTree = "<group>"; };
+		FABAECD227FA2CC200E185F6 /* File025_1mM_THF_Ex_550nm005.DX */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File025_1mM_THF_Ex_550nm005.DX; sourceTree = "<group>"; };
+		FABAECD327FA2CC200E185F6 /* File035_nmr_15N.jdx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File035_nmr_15N.jdx; sourceTree = "<group>"; };
+		FABAECD427FA2CC200E185F6 /* File010.JDX */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File010.JDX; sourceTree = "<group>"; };
+		FABAECD527FA2CC200E185F6 /* File004.jdx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File004.jdx; sourceTree = "<group>"; };
+		FABAECD627FA2CC200E185F6 /* File006.jdx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File006.jdx; sourceTree = "<group>"; };
+		FABAECD727FA2CC200E185F6 /* File019_RWTH_Jasco_V770.dx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File019_RWTH_Jasco_V770.dx; sourceTree = "<group>"; };
+		FABAECD827FA2CC200E185F6 /* File042.jdx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File042.jdx; sourceTree = "<group>"; };
+		FABAECD927FA2CC200E185F6 /* File034_nmr_29Si.jdx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File034_nmr_29Si.jdx; sourceTree = "<group>"; };
+		FABAECDA27FA2CC200E185F6 /* File046.jdx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File046.jdx; sourceTree = "<group>"; };
+		FABAECDB27FA2CC200E185F6 /* File045.jdx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File045.jdx; sourceTree = "<group>"; };
+		FABAECDC27FA2CC200E185F6 /* File032_LCMS.jdx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File032_LCMS.jdx; sourceTree = "<group>"; };
+		FABAECDD27FA2CC200E185F6 /* File009.jdx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File009.jdx; sourceTree = "<group>"; };
+		FABAECDE27FA2CC200E185F6 /* File011.dx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File011.dx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +310,7 @@
 		FA6EB9E527AAC97300738161 /* testdata */ = {
 			isa = PBXGroup;
 			children = (
+				FABAECCF27FA2CC200E185F6 /* nmr */,
 				FA6EB9E727AAC98E00738161 /* test_file_1.dx */,
 				FA6EB9F727AAC98E00738161 /* test_file_2.dx */,
 				FA6EB9F227AAC98E00738161 /* test_file_3.dx */,
@@ -303,6 +334,28 @@
 				FA6EB9E627AAC98E00738161 /* test_file_20.dx */,
 			);
 			path = testdata;
+			sourceTree = "<group>";
+		};
+		FABAECCF27FA2CC200E185F6 /* nmr */ = {
+			isa = PBXGroup;
+			children = (
+				FABAECD027FA2CC200E185F6 /* File033_nmr_31P.jdx */,
+				FABAECD127FA2CC200E185F6 /* File012.dx */,
+				FABAECD227FA2CC200E185F6 /* File025_1mM_THF_Ex_550nm005.DX */,
+				FABAECD327FA2CC200E185F6 /* File035_nmr_15N.jdx */,
+				FABAECD427FA2CC200E185F6 /* File010.JDX */,
+				FABAECD527FA2CC200E185F6 /* File004.jdx */,
+				FABAECD627FA2CC200E185F6 /* File006.jdx */,
+				FABAECD727FA2CC200E185F6 /* File019_RWTH_Jasco_V770.dx */,
+				FABAECD827FA2CC200E185F6 /* File042.jdx */,
+				FABAECD927FA2CC200E185F6 /* File034_nmr_29Si.jdx */,
+				FABAECDA27FA2CC200E185F6 /* File046.jdx */,
+				FABAECDB27FA2CC200E185F6 /* File045.jdx */,
+				FABAECDC27FA2CC200E185F6 /* File032_LCMS.jdx */,
+				FABAECDD27FA2CC200E185F6 /* File009.jdx */,
+				FABAECDE27FA2CC200E185F6 /* File011.dx */,
+			);
+			path = nmr;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -481,29 +534,44 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA6EB9B927AAC41500738161 /* LaunchScreen.storyboard in Resources */,
+				FABAECE427FA2CC200E185F6 /* File004.jdx in Resources */,
 				FA6EB9FF27AAC98E00738161 /* test_file_15.dx in Resources */,
 				FA6EB9FC27AAC98E00738161 /* test_file_5.dx in Resources */,
+				FABAECE627FA2CC200E185F6 /* File019_RWTH_Jasco_V770.dx in Resources */,
 				FA6EBA0027AAC98E00738161 /* test_file_13.dx in Resources */,
 				FA6EB9FA27AAC98E00738161 /* test_file_20.dx in Resources */,
 				FA6EBA0D27AAC98F00738161 /* test_file_6.dx in Resources */,
 				FA6EB9FB27AAC98E00738161 /* test_file_1.dx in Resources */,
+				FABAECE027FA2CC200E185F6 /* File012.dx in Resources */,
 				FA6EB9FE27AAC98E00738161 /* test_file_14.dx in Resources */,
 				FA6EBA0B27AAC98F00738161 /* test_file_2.dx in Resources */,
+				FABAECE227FA2CC200E185F6 /* File035_nmr_15N.jdx in Resources */,
 				FA6EBA0A27AAC98F00738161 /* test_file_9.dx in Resources */,
 				FA6EBA0527AAC98E00738161 /* test_file_8.dx in Resources */,
+				FABAECEB27FA2CC200E185F6 /* File032_LCMS.jdx in Resources */,
 				FA6EBA0727AAC98E00738161 /* test_file_16.dx in Resources */,
+				FABAECE727FA2CC200E185F6 /* File042.jdx in Resources */,
+				FABAECE327FA2CC200E185F6 /* File010.JDX in Resources */,
 				FA6EB9B627AAC41500738161 /* Assets.xcassets in Resources */,
 				FA6EBA0827AAC98E00738161 /* test_file_18.dx in Resources */,
 				FA6EBA0627AAC98E00738161 /* test_file_3.dx in Resources */,
+				FABAECDF27FA2CC200E185F6 /* File033_nmr_31P.jdx in Resources */,
 				FA6EB9B427AAC41400738161 /* Main.storyboard in Resources */,
 				FA6EBA0227AAC98E00738161 /* test_file_7.dx in Resources */,
 				FA6EB9FD27AAC98E00738161 /* test_file_12.dx in Resources */,
 				FA6EBA0427AAC98E00738161 /* test_file_4_failed.dx in Resources */,
 				FA6EBA0927AAC98E00738161 /* test_file_10.dx in Resources */,
+				FABAECE827FA2CC200E185F6 /* File034_nmr_29Si.jdx in Resources */,
+				FABAECEA27FA2CC200E185F6 /* File045.jdx in Resources */,
 				FA6EBA0327AAC98E00738161 /* test_file_19.dx in Resources */,
+				FABAECED27FA2CC200E185F6 /* File011.dx in Resources */,
 				FA6EBA0127AAC98E00738161 /* test_file_17.dx in Resources */,
+				FABAECEC27FA2CC200E185F6 /* File009.jdx in Resources */,
+				FABAECE127FA2CC200E185F6 /* File025_1mM_THF_Ex_550nm005.DX in Resources */,
+				FABAECE927FA2CC200E185F6 /* File046.jdx in Resources */,
 				FA59EAB127F2144E00897BA7 /* RCV_LSH-R444_full+Fc.jdx in Resources */,
 				FA6EBA0C27AAC98F00738161 /* test_file_11.dx in Resources */,
+				FABAECE527FA2CC200E185F6 /* File006.jdx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
