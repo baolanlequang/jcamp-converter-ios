@@ -28,7 +28,7 @@ public class JcampReader {
     public init(url: String) {
         if let fileURL = URL(string: url) {
             do {
-                let data = try String(contentsOf: fileURL)
+                let data = try String(contentsOf: fileURL, encoding: .ascii)
                 let tmpData = data.components(separatedBy: .newlines)
                 let structuredData = self.parsingStructure(data: tmpData)
                 self.jcamp = Jcamp(originData: structuredData)
