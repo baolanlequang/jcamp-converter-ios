@@ -21,7 +21,7 @@ pod init
 Open `Podfile` and add
 
 ```
-pod 'JcampConverter', '~> 0.0.5'
+pod 'JcampConverter', '~> 0.0.7'
 ```
  
 Open your terminal, navigate to the project's location and the following commad to install *MoJcampConverter* to your project.
