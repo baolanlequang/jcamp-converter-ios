@@ -75,12 +75,14 @@ final class ParserTests: XCTestCase {
     }
     
     func testParseDIFDUPString() throws {
-        let strValue = "1JT%jX"
-        let expected = [1.0, 2.0, 3.0, 3.0, 2.0, 1.0, 0.0, -1.0, -2.0, -3.0]
+        let arrValue = ["1JT%jX", "56A28"]
+        let arrExpected = [[1.0, 2.0, 3.0, 3.0, 2.0, 1.0, 0.0, -1.0, -2.0, -3.0], [56.0, 128.0]]
         
-        let parsedValue = parser.parse(strValue)
-        
-        XCTAssertEqual(parsedValue, expected)
+        for (idx, strValue) in arrValue.enumerated() {
+            let parsedValue = parser.parse(strValue)
+            let expected = arrExpected[idx]
+            
+            XCTAssertEqual(parsedValue, expected)
+        }
     }
-
 }
