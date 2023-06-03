@@ -43,4 +43,14 @@ extension String {
         }
         return result
     }
+    
+    func matches(_ pattern: String) -> [NSTextCheckingResult] {
+        do {
+            let regex = try NSRegularExpression(pattern: pattern)
+            let range = NSRange(self.startIndex..<self.endIndex, in: self)
+            return regex.matches(in: self, range: range)
+        } catch {
+            return []
+        }
+    }
 }

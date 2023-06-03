@@ -81,4 +81,17 @@ class DatasetHelper {
         
         return convertedStr
     }
+    
+    func splitString(_ value: String) -> [String] {
+        let regexPattern = "[+-]?\\d+(\\.\\d+)?"
+
+        let matches = value.matches(regexPattern)
+
+        let numbersArray = matches.map { match in
+            let startIndex = value.index(value.startIndex, offsetBy: match.range.lowerBound)
+            let endIndex = value.index(value.startIndex, offsetBy: match.range.upperBound)
+            return String(value[startIndex..<endIndex])
+        }
+        return numbersArray
+    }
 }
