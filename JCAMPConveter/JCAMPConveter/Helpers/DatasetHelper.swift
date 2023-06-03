@@ -28,4 +28,57 @@ class DatasetHelper {
         }
         return false
     }
+    
+    func convertDUP(_ value: String) -> String {
+        var convertedStr = ""
+        
+        for (idx, char) in value.enumerated() {
+            let charString = String(char)
+            if let dupValue = DUP[charString] {
+                let prevChar = value[idx-1]
+                let newChars = Array(repeating: prevChar, count: dupValue-1)
+                convertedStr += newChars.joined()
+            }
+            else {
+                convertedStr += charString
+            }
+        }
+        
+        return convertedStr
+    }
+    
+    func convertSQZ(_ value: String) -> String {
+        var convertedStr = ""
+        
+        for char in value {
+            let charString = String(char)
+            if let sqzValue = SQZ[charString] {
+                convertedStr += String(sqzValue)
+            }
+            else {
+                convertedStr += charString
+            }
+        }
+        
+        return convertedStr
+    }
+    
+    func convertDIF(_ value: String) -> String {
+        var convertedStr = ""
+        var previousNumberStr = ""
+        
+        for char in value {
+            let charString = String(char)
+            if let difValue = DIF[charString] {
+                let previousValue = Double(previousNumberStr) ?? 0.0
+                let numberValue = previousValue + Double(difValue)
+                convertedStr = String(numberValue)
+            }
+            else {
+                previousNumberStr += charString
+            }
+        }
+        
+        return convertedStr
+    }
 }
