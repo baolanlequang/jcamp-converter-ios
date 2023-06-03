@@ -83,15 +83,29 @@ class DatasetHelper {
     }
     
     func splitString(_ value: String) -> [String] {
+        let asdfRegexPattern = "[a-sA-Z@%]"
+
+        do {
+            let regex = try NSRegularExpression(pattern: asdfRegexPattern)
+            let range = NSRange(location: 0, length: value.utf16.count)
+
+            if let _ = regex.firstMatch(in: value, options: [], range: range) {
+                return [value]
+            }
+        } catch {
+//            print("Error creating regex: \(error)")
+        }
+        
         let regexPattern = "[+-]?\\d+(\\.\\d+)?"
 
         let matches = value.matches(regexPattern)
+//        print(matches)
 
         let numbersArray = matches.map { match in
             let startIndex = value.index(value.startIndex, offsetBy: match.range.lowerBound)
             let endIndex = value.index(value.startIndex, offsetBy: match.range.upperBound)
             return String(value[startIndex..<endIndex])
         }
-        return numbersArray
+        return numbersArray.count > 1 ? numbersArray : [value]
     }
 }
