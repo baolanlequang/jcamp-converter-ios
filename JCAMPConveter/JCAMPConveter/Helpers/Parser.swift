@@ -35,9 +35,9 @@ class Parser {
         return nil
     }
     
-    func parse(_ value: String) -> [Double] {
+    func parse(_ value: String) -> (data: [Double], isDIF: Bool) {
         if let doubleValue = Double(value) {
-            return [doubleValue]
+            return (data: [doubleValue], isDIF: false)
         }
         
         var result: [Double] = []
@@ -49,7 +49,7 @@ class Parser {
                     result.append(number)
                 }
             }
-            return result
+            return (data: result, isDIF: false)
         }
         
         let dataCompressedStr = arrSplitted[0]
@@ -59,8 +59,10 @@ class Parser {
         let removedDUP = datasetHelper.convertDUP(dataCompressedStr)
         
         var isDIF = false
+        var lastChar = ""
         for char in removedDUP {
             let charString = String(char)
+            lastChar = charString
             if (char.isNumber || char == ".") {
                 numberStr.append(char)
             }
@@ -86,6 +88,7 @@ class Parser {
             result.append(number)
         }
         
-        return result
+        let checkDIF = DIF[lastChar] != nil
+        return (data: result, isDIF: checkDIF)
     }
 }
