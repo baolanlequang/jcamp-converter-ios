@@ -39,7 +39,6 @@ class Parser {
     }
     
     private func getArrayNumber(_ value: String, _ encodedType: ENCODED_TYPE, _ cachingData: String, _ cachingEncodedType: ENCODED_TYPE, _ data: [Double]) -> [Double] {
-        print("encodedType: \(encodedType), value: \(value), cachingencode: \(cachingEncodedType), cachingData: \(cachingData)")
         var result: [Double] = []
         switch (encodedType) {
         case .SQZ:
@@ -94,13 +93,6 @@ class Parser {
         
         var numberStr = ""
         var encodedType = ENCODED_TYPE.NONE
-        var isSkipCheckPoint = false
-        
-//        let removedDUP = datasetHelper.convertDUP(dataCompressedStr)
-//        print("removeudp: \(removedDUP)")
-//
-//        let lastChar = String(removedDUP[removedDUP.count-1])
-//        let checkDIF = DIF[lastChar] != nil
         
         var isDIF = false
         var cachingData = ""
@@ -132,18 +124,16 @@ class Parser {
                 currEncodedType = ENCODED_TYPE.DUP
             }
             
-            if (!isSkipCheckPoint) {
-                let arrData = self.getArrayNumber(numberStr, encodedType, cachingData, cachingEncodedType, result)
-                cachingEncodedType = encodedType
-                result.append(contentsOf: arrData)
-                cachingData = numberStr
-            }
+            let arrData = self.getArrayNumber(numberStr, encodedType, cachingData, cachingEncodedType, result)
+            cachingEncodedType = encodedType
+            result.append(contentsOf: arrData)
+            cachingData = numberStr
             
             numberStr = decodedChar
             encodedType = currEncodedType
         }
         
-        
+        // Process the last char
         let arrData = self.getArrayNumber(numberStr, encodedType, cachingData, cachingEncodedType, result)
         cachingEncodedType = encodedType
         result.append(contentsOf: arrData)

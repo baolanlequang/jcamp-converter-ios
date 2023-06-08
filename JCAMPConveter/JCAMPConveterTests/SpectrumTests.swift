@@ -13,18 +13,6 @@ final class SpectrumTests: XCTestCase {
     var spectrum: Spectrum!
 
     override func setUpWithError() throws {
-//        let data = """
-//4@VKT%TLkj%J%KLJ%njKjL%kL%jJULJ%kLK1%lLMNPNPRLJ0QTOJ1P
-//56A28
-//"""
-//        let data = """
-//4 0 0 0 0 2 4 4 4 7
-//13 5 4 4 5 5 7 10 11 11
-//22 6 5 7 6 9 9 7 10 10
-//31 9 10 11 12 15 16 16 14 17
-//40 38 38 35 38 42 47 54 59 66
-//49 75 78 88 96 104 110 121 128
-//"""
         let data = """
 3200C1276%Sj05Sl3Sm2SJ44So5Sn7SJ8SK7Sq3SK3SO2Sj4SJ28SL0SM1SQ0SK7SM4S
 3519C1501K3SJ0SQ2SL1Sk8SK2Sj8SMSK5SkSn4SJ2Sm0Sl9Sm2Sj8Sl4So0SJSk6Sk7S
@@ -114,8 +102,8 @@ final class SpectrumTests: XCTestCase {
 31792B6513K1SQSj6Sl7SJ6SpSj0SK5Sk7SM9Sj2Sk7SJ0S
 31999@
 """
-        let factorX = 1.0, factorY = 2.441406250E-4
-        spectrum = Spectrum(data, factorX: factorX, factorY: factorY)
+        let factorX = 0.125, factorY = 0.00312499
+        spectrum = Spectrum(data, factorX: factorX, factorY: factorY, firstX: 400.000000, lastX: 4000.000000)
     }
 
     override func tearDownWithError() throws {
@@ -125,5 +113,11 @@ final class SpectrumTests: XCTestCase {
     func testGetListX() throws {
         let listX = spectrum.getListX()
         XCTAssertEqual(listX.count, 1801)
+        XCTAssertEqual(listX.last?.rounded(), 4000.0)
+    }
+    
+    func testGetListY() throws {
+        let listY = spectrum.getListY()
+        XCTAssertEqual(listY.count, 1801)
     }
 }

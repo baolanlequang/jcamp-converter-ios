@@ -12,16 +12,18 @@ class Spectrum {
     
     private var parser: Parser!
     
-    private var listX: [[Double]] = []
-    private var listY: [[Double]] = []
-    private var factorX: Double
-    private var factorY: Double
+    private var listX: [[Double]] = [], listY: [[Double]] = []
+    private var factorX: Double, factorY: Double
+    private var firstX: Double, lastX: Double
     
-    init(_ data: String, factorX: Double = 1.0, factorY: Double = 1.0) {
+    
+    init(_ data: String, factorX: Double = 1.0, factorY: Double = 1.0, firstX: Double = 0.0, lastX: Double = 0.0) {
         self.dataString = data
         self.parser = Parser()
         self.factorX = factorX
         self.factorY = factorY
+        self.firstX = firstX
+        self.lastX = lastX
         
         self.parseData()
     }
@@ -33,30 +35,33 @@ class Spectrum {
         
         var nPoints = 0.0
         var isSkipCheckPoint = false
-        for line in dataLines {
+        for (lineIdx, line) in dataLines.enumerated() {
             let parsedLine = self.parser.parse(line)
             let parsedData = parsedLine.data
             let parsedDataCount = parsedData.count
             if (parsedDataCount > 1) {
                 arrStartX.append(parsedData[0])
+                var arrY: [Double] = []
                 if (!isSkipCheckPoint) {
-                    let arrY = Array(parsedData[1..<parsedDataCount])
-                    self.listY.append(arrY)
-                    nPoints += Double(arrY.count)
+                    arrY = Array(parsedData[1..<parsedDataCount])
                 }
                 else {
-                    let arrY = Array(parsedData[2..<parsedDataCount])
-                    self.listY.append(arrY)
-                    nPoints += Double(arrY.count) - 1
+                    var prevLine = self.listY[lineIdx - 1]
+                    prevLine.removeLast()
+                    self.listY[lineIdx-1] = prevLine
+                    nPoints -= 1
+                    arrY = Array(parsedData[1..<parsedDataCount])
                 }
+                
+                self.listY.append(arrY)
+                nPoints += Double(arrY.count)
                 
                 isSkipCheckPoint = parsedLine.isDIF
             }
         }
         
-        let firstX = arrStartX[0], lastX = arrStartX[arrStartX.count-1]
-        let deltaX = (lastX - firstX) / (nPoints - 1)
-        
+        let deltaX = (self.lastX - self.firstX) / (nPoints - 1)
+
         for (idx, startX) in arrStartX.enumerated() {
             var realXValue = startX * self.factorX
             var arrX: [Double] = [realXValue]
@@ -65,33 +70,33 @@ class Spectrum {
             if (arrCount > 2) {
                 for _ in 1..<arrY.count {
                     realXValue += deltaX
-                    let xValue = startX * self.factorX + deltaX
                     arrX.append(realXValue)
                 }
             }
-            
-            if (arrX.count > 1) {
-                self.listX.append(arrX)
-            }
-            
+
+            self.listX.append(arrX)
+
         }
-        print("npoiint: \(nPoints)")
-        print("arrStartX: \(arrStartX)")
-        print("listY: \(self.listY.last)")
-        print("firstX: \(firstX)")
-        print("lastX: \(lastX)")
-        print("delta: \(deltaX)")
     }
     
     func getListX() -> [Double] {
         var result: [Double] = []
         for line in self.listX {
             for xValue in line {
-//                let realXValue = xValue * self.factorX
                 result.append(xValue)
             }
         }
-        print(result)
+        return result
+    }
+    
+    func getListY() -> [Double] {
+        var result: [Double] = []
+        for line in self.listY {
+            for yValue in line {
+                let realY = yValue * self.factorY
+                result.append(realY)
+            }
+        }
         return result
     }
 }
