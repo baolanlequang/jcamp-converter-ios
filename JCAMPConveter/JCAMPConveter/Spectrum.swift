@@ -38,9 +38,10 @@ class Spectrum {
             let parsedData = parsedLine.data
             let parsedDataCount = parsedData.count
             print(line)
-//            print(parsedData)
+            print(parsedData.count)
             if (parsedDataCount > 1) {
                 arrStartX.append(parsedData[0])
+                print("myisSkipCheckPoint: \(isSkipCheckPoint)")
                 if (!isSkipCheckPoint) {
                     let arrY = Array(parsedData[1..<parsedDataCount])
                     self.listY.append(arrY)
@@ -48,9 +49,9 @@ class Spectrum {
                     nPoints += Double(arrY.count)
                 }
                 else {
-                    var prevArrY = self.listY[lineIdx-1]
-                    prevArrY.removeLast()
-                    self.listY[lineIdx-1] = prevArrY
+//                    var prevArrY = self.listY[lineIdx-1]
+//                    prevArrY.removeLast()
+//                    self.listY[lineIdx-1] = prevArrY
                     let arrY = Array(parsedData[2..<parsedDataCount])
                     self.listY.append(arrY)
                     nPoints += Double(arrY.count) - 1

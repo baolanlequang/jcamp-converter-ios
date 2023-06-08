@@ -10,12 +10,15 @@ import Foundation
 class Parser {
     
     private var datasetHelper: DatasetHelper!
+    private enum ENCODED_TYPE {
+        case NONE, SQZ, DIF, DUP
+    }
     
     init() {
         datasetHelper = DatasetHelper()
     }
     
-    private func getNumber(_ value: String, _ isDIF: Bool = false) -> Double? {
+    private func getNumber(_ value: String, _ isDIF: Bool = false, _ storedData: [Double] = []) -> Double? {
         if let doubleNumber = Double(value) {
             return doubleNumber
         }
@@ -33,6 +36,41 @@ class Parser {
         }
         
         return nil
+    }
+    
+    private func getArrayNumber(_ value: String, _ encodedType: ENCODED_TYPE, _ cachingData: String, _ cachingEncodedType: ENCODED_TYPE, _ data: [Double]) -> [Double] {
+        print("encodedType: \(encodedType), value: \(value), cachingencode: \(cachingEncodedType), cachingData: \(cachingData)")
+        var result: [Double] = []
+        switch (encodedType) {
+        case .SQZ:
+            let convertedStr = datasetHelper.convertSQZ(value)
+            if let doubleNumber = Double(convertedStr) {
+                result.append(doubleNumber)
+            }
+        case .DIF:
+            if let prevValue = data.last, let difValue = Double(value) {
+                let encodedValue = prevValue + difValue
+                result.append(encodedValue)
+            }
+        case .DUP:
+            if let prevValue = Double(cachingData), let dupValue = Int(value) {
+                for _ in 0..<dupValue-1 {
+                    if (cachingEncodedType == .DIF) {
+                        if let lastData = data.last {
+                            result.append(lastData + prevValue)
+                        }
+                    }
+                    else {
+                        result.append(prevValue)
+                    }
+                }
+            }
+        default:
+            if let doubleNumber = Double(value) {
+                result.append(doubleNumber)
+            }
+        }
+        return result
     }
     
     func parse(_ value: String) -> (data: [Double], isDIF: Bool) {
@@ -55,40 +93,63 @@ class Parser {
         let dataCompressedStr = arrSplitted[0]
         
         var numberStr = ""
+        var encodedType = ENCODED_TYPE.NONE
+        var isSkipCheckPoint = false
         
-        let removedDUP = datasetHelper.convertDUP(dataCompressedStr)
+//        let removedDUP = datasetHelper.convertDUP(dataCompressedStr)
+//        print("removeudp: \(removedDUP)")
+//
+//        let lastChar = String(removedDUP[removedDUP.count-1])
+//        let checkDIF = DIF[lastChar] != nil
         
         var isDIF = false
-        var lastChar = ""
-        for char in removedDUP {
+        var cachingData = ""
+        var cachingEncodedType = ENCODED_TYPE.NONE
+        
+        for char in dataCompressedStr {
             let charString = String(char)
-            lastChar = charString
+            var decodedChar = ""
+            
             if (char.isNumber || char == ".") {
                 numberStr.append(char)
+                continue
             }
-            else if let dupVal = SQZ[charString] {
+            
+            var currEncodedType = ENCODED_TYPE.SQZ
+            
+            if let sqzVal = SQZ[charString] {
+                decodedChar = String(sqzVal)
+                currEncodedType = ENCODED_TYPE.SQZ
                 isDIF = false
-                if let number = getNumber(numberStr, isDIF) {
-                    result.append(number)
-                }
-                numberStr = dupVal
             }
-            else if let _ = DIF[charString] {
-                if let number = getNumber(numberStr, isDIF) {
-                    result.append(number)
-                    numberStr = String(number) + charString
-                }
-                
+            else if let difVal = DIF[charString] {
+                decodedChar = String(difVal)
+                currEncodedType = ENCODED_TYPE.DIF
                 isDIF = true
-               
             }
+            else if let dupVal = DUP[charString] {
+                decodedChar = String(dupVal)
+                currEncodedType = ENCODED_TYPE.DUP
+            }
+            
+            if (!isSkipCheckPoint) {
+                let arrData = self.getArrayNumber(numberStr, encodedType, cachingData, cachingEncodedType, result)
+                cachingEncodedType = encodedType
+                result.append(contentsOf: arrData)
+                cachingData = numberStr
+            }
+            
+            numberStr = decodedChar
+            encodedType = currEncodedType
         }
         
-        if let number = getNumber(numberStr, isDIF) {
-            result.append(number)
-        }
         
-        let checkDIF = DIF[lastChar] != nil
-        return (data: result, isDIF: checkDIF)
+        let arrData = self.getArrayNumber(numberStr, encodedType, cachingData, cachingEncodedType, result)
+        cachingEncodedType = encodedType
+        result.append(contentsOf: arrData)
+        cachingData = numberStr
+        
+        
+        return (data: result, isDIF: isDIF)
     }
 }

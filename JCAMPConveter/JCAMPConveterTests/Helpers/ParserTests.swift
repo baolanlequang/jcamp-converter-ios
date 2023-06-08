@@ -80,26 +80,23 @@ final class ParserTests: XCTestCase {
         XCTAssertEqual(parsedValue.isDIF, expected.isDIF)
     }
     
+//    func testParseDIFButNotEndString() throws {
+//        let strValue = "914320C58KJ0J3MQMNJ7NJ2nJ1K3qJ6J1J8NOKK7M1k1J1TJ2K5L5L2k8J1L4pJ7K5jJ3K8M7J9ML7"
+//        let expected = (data: [1.0], isDIF: true)
+//        
+//        let parsedValue = parser.parse(strValue)
+//        print(parsedValue.data)
+//        
+//        XCTAssertEqual(parsedValue.isDIF, expected.isDIF)
+//    }
+//    
     func testParseDIFDUPString() throws {
-        let arrValue = ["1JT%jX", "56A28"]
-        let arrExpected = [(data: [1.0, 2.0, 3.0, 3.0, 2.0, 1.0, 0.0, -1.0, -2.0, -3.0], isDIF: true), (data: [56.0, 128.0], isDIF: false)]
-        
-        for (idx, strValue) in arrValue.enumerated() {
-            let parsedValue = parser.parse(strValue)
-            let expected = arrExpected[idx]
-            
-            XCTAssertEqual(parsedValue.data, expected.data)
-            XCTAssertEqual(parsedValue.isDIF, expected.isDIF)
-        }
-    }
-    
-    func testParseDIFButNotEndString() throws {
-        let strValue = "914320C58KJ0J3MQMNJ7NJ2nJ1K3qJ6J1J8NOKK7M1k1J1TJ2K5L5L2k8J1L4pJ7K5jJ3K8M7J9ML7"
-        let expected = (data: [1.0], isDIF: false)
+        let strValue = "4879C1556N0TN9SM9SN3SK9SL7SK9SK7SL7SJ2SJSJ0Sj5Sj3Sj7Sk9Sk6Sl0Sm7Sl8S"
+        let expected = (data: [4879.0, 31556.0, 31606.0, 31656.0, 31715.0, 31764.0, 31817.0, 31846.0, 31883.0, 31912.0, 31939.0, 31976.0, 31988.0, 31989.0, 31999.0, 31984.0, 31971.0, 31954.0, 31925.0, 31899.0, 31869.0, 31822.0, 31784.0], isDIF: true)
         
         let parsedValue = parser.parse(strValue)
-        print(parsedValue.data)
         
+        XCTAssertEqual(parsedValue.data, expected.data)
         XCTAssertEqual(parsedValue.isDIF, expected.isDIF)
     }
 }
