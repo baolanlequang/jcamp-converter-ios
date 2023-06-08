@@ -33,52 +33,28 @@ class Spectrum {
         
         var nPoints = 0.0
         var isSkipCheckPoint = false
-        for (lineIdx, line) in dataLines.enumerated() {
+        for line in dataLines {
             let parsedLine = self.parser.parse(line)
             let parsedData = parsedLine.data
             let parsedDataCount = parsedData.count
-            print(line)
-            print(parsedData.count)
             if (parsedDataCount > 1) {
                 arrStartX.append(parsedData[0])
-                print("myisSkipCheckPoint: \(isSkipCheckPoint)")
                 if (!isSkipCheckPoint) {
                     let arrY = Array(parsedData[1..<parsedDataCount])
                     self.listY.append(arrY)
-                    print(parsedData.count)
                     nPoints += Double(arrY.count)
                 }
                 else {
-//                    var prevArrY = self.listY[lineIdx-1]
-//                    prevArrY.removeLast()
-//                    self.listY[lineIdx-1] = prevArrY
                     let arrY = Array(parsedData[2..<parsedDataCount])
                     self.listY.append(arrY)
                     nPoints += Double(arrY.count) - 1
                 }
-                
-//                if (!isSkipCheckPoint || (isSkipCheckPoint && !parsedLine.isDIF)) {
-//                    let arrY = Array(parsedData[1..<parsedDataCount])
-//                    self.listY.append(arrY)
-//                    nPoints += Double(arrY.count)
-//                }
-//                else {
-//                    var prevArrY = self.listY[lineIdx-1]
-//                    prevArrY.removeLast()
-//                    self.listY[lineIdx-1] = prevArrY
-//                    let arrY = Array(parsedData[2..<parsedDataCount])
-//                    self.listY.append(arrY)
-//                    nPoints += Double(arrY.count) - 1
-//                }
-                print("parsedLine.isDIF: \(parsedLine.isDIF)")
-                print("isSkipCheckPoint: \(isSkipCheckPoint)")
                 
                 isSkipCheckPoint = parsedLine.isDIF
             }
         }
         
         let firstX = arrStartX[0], lastX = arrStartX[arrStartX.count-1]
-//        let firstX = 4.0, lastX = 56.0
         let deltaX = (lastX - firstX) / (nPoints - 1)
         
         for (idx, startX) in arrStartX.enumerated() {
@@ -94,8 +70,9 @@ class Spectrum {
                 }
             }
             
-            
-            self.listX.append(arrX)
+            if (arrX.count > 1) {
+                self.listX.append(arrX)
+            }
             
         }
         print("npoiint: \(nPoints)")
