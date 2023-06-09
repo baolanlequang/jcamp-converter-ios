@@ -14,6 +14,8 @@
 		FA37EA9B2A2B68420030F100 /* DatasetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA37EA9A2A2B68420030F100 /* DatasetHelper.swift */; };
 		FA5ECBEE2A2E74720017A9BD /* SpectrumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5ECBED2A2E74720017A9BD /* SpectrumTests.swift */; };
 		FA5ECBF02A2E76410017A9BD /* Spectrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5ECBEF2A2E76410017A9BD /* Spectrum.swift */; };
+		FA7C69BB2A3361B500CDCD71 /* JcampTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C69BA2A3361B500CDCD71 /* JcampTests.swift */; };
+		FA7C69BD2A3361E700CDCD71 /* Jcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7C69BC2A3361E700CDCD71 /* Jcamp.swift */; };
 		FAB504AE2A2B783200BA5A2A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB504AD2A2B783200BA5A2A /* Constants.swift */; };
 		FAB504B12A2B7D0300BA5A2A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB504B02A2B7D0300BA5A2A /* Utilities.swift */; };
 		FAB504B32A2B8F4400BA5A2A /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB504B22A2B8F4400BA5A2A /* ParserTests.swift */; };
@@ -39,6 +41,8 @@
 		FA37EA9A2A2B68420030F100 /* DatasetHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatasetHelper.swift; sourceTree = "<group>"; };
 		FA5ECBED2A2E74720017A9BD /* SpectrumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectrumTests.swift; sourceTree = "<group>"; };
 		FA5ECBEF2A2E76410017A9BD /* Spectrum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spectrum.swift; sourceTree = "<group>"; };
+		FA7C69BA2A3361B500CDCD71 /* JcampTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JcampTests.swift; sourceTree = "<group>"; };
+		FA7C69BC2A3361E700CDCD71 /* Jcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jcamp.swift; sourceTree = "<group>"; };
 		FAB504AD2A2B783200BA5A2A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FAB504B02A2B7D0300BA5A2A /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		FAB504B22A2B8F4400BA5A2A /* ParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 				FAB504AF2A2B7CE600BA5A2A /* Utils */,
 				FA37EA992A2B68300030F100 /* Helpers */,
 				FA5ECBEF2A2E76410017A9BD /* Spectrum.swift */,
+				FA7C69BC2A3361E700CDCD71 /* Jcamp.swift */,
 			);
 			path = JCAMPConveter;
 			sourceTree = "<group>";
@@ -99,6 +104,7 @@
 				FA37EA962A2B66C90030F100 /* Helpers */,
 				FA37EA8B2A2B63E90030F100 /* JCAMPConveterTests.swift */,
 				FA5ECBED2A2E74720017A9BD /* SpectrumTests.swift */,
+				FA7C69BA2A3361B500CDCD71 /* JcampTests.swift */,
 			);
 			path = JCAMPConveterTests;
 			sourceTree = "<group>";
@@ -245,6 +251,7 @@
 				FA5ECBF02A2E76410017A9BD /* Spectrum.swift in Sources */,
 				FA37EA9B2A2B68420030F100 /* DatasetHelper.swift in Sources */,
 				FAB504AE2A2B783200BA5A2A /* Constants.swift in Sources */,
+				FA7C69BD2A3361E700CDCD71 /* Jcamp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +263,7 @@
 				FA5ECBEE2A2E74720017A9BD /* SpectrumTests.swift in Sources */,
 				FA37EA8C2A2B63E90030F100 /* JCAMPConveterTests.swift in Sources */,
 				FAB504B32A2B8F4400BA5A2A /* ParserTests.swift in Sources */,
+				FA7C69BB2A3361B500CDCD71 /* JcampTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
