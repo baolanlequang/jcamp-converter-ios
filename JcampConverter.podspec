@@ -92,7 +92,7 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "JcampConverter/JcampConverter/*.{h,m,swift}", "JcampConverter/JcampConverter/Utils/*.{h,m,swift}"
+  spec.source_files  = "JCAMPConveter/JCAMPConveter/*.{h,m,swift}", "JCAMPConveter/JCAMPConveter/Utils/*.{h,m,swift}", "JCAMPConveter/JCAMPConveter/Helpers/*.{h,m,swift}"
   spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
