@@ -29,7 +29,6 @@ class Jcamp {
             self.originData = stringData.components(separatedBy: .newlines)
             self.readData()
         }
-        
     }
     
     private func getSpectrum(arrData: [String], dataRecords: [String]) {
@@ -54,20 +53,71 @@ class Jcamp {
             firstX = firstX.replacingOccurrences(of: " ", with: "")
             firstXValue = Double(firstX) ?? 0.0
         }
+        else if var first = dicDataRecord["##FIRST"] {
+            first = first.replacingOccurrences(of: " ", with: "")
+            let arrFirst = first.components(separatedBy: ",")
+            let firstX = arrFirst[0]
+            let firstR = arrFirst[1]
+            let firstI = arrFirst[2]
+            dicDataRecord["##FIRSTX"] = firstX
+            dicDataRecord["##FIRSTR"] = firstR
+            dicDataRecord["##FIRSTI"] = firstI
+            
+            firstXValue = Double(firstX) ?? 0.0
+        }
+        else if let prevDicDataRecord = self.labeledDataRecords.last, let firstX = prevDicDataRecord["##FIRSTX"] {
+            firstXValue = Double(firstX) ?? 0.0
+        }
         
         if var lastX = dicDataRecord["##LASTX"] {
             lastX = lastX.replacingOccurrences(of: " ", with: "")
             lastXValue = Double(lastX) ?? 0.0
         }
+        else if var last = dicDataRecord["##LAST"] {
+            last = last.replacingOccurrences(of: " ", with: "")
+            let arrLast = last.components(separatedBy: ",")
+            let lastX = arrLast[0]
+            let lastR = arrLast[1]
+            let lastI = arrLast[2]
+            dicDataRecord["##LASTX"] = lastX
+            dicDataRecord["##LASTR"] = lastR
+            dicDataRecord["##LASTI"] = lastI
+            
+            lastXValue = Double(lastX) ?? 0.0
+        }
+        else if let prevDicDataRecord = self.labeledDataRecords.last, let lastX = prevDicDataRecord["##LASTX"] {
+            lastXValue = Double(lastX) ?? 0.0
+        }
         
         if var factorX = dicDataRecord["##XFACTOR"] {
             factorX = factorX.replacingOccurrences(of: " ", with: "")
-            factorXValue = Double(factorX) ?? 0.0
+            factorXValue = Double(factorX) ?? 1.0
+        }
+        else if var factor = dicDataRecord["##FACTOR"] {
+            factor = factor.replacingOccurrences(of: " ", with: "")
+            let arrFactors = factor.components(separatedBy: ",")
+            let factorX = arrFactors[0]
+            let factorR = arrFactors[1]
+            let factorI = arrFactors[2]
+            dicDataRecord["##XFACTOR"] = factorX
+            dicDataRecord["##RFACTOR"] = factorR
+            dicDataRecord["##IFACTOR"] = factorI
+            
+            factorXValue = Double(factorX) ?? 1.0
+        }
+        else if let prevDicDataRecord = self.labeledDataRecords.last, let factorX = prevDicDataRecord["##XFACTOR"] {
+            factorXValue = Double(factorX) ?? 1.0
         }
         
         if var factorY = dicDataRecord["##YFACTOR"] {
             factorY = factorY.replacingOccurrences(of: " ", with: "")
-            factorYValue = Double(factorY) ?? 0.0
+            factorYValue = Double(factorY) ?? 1.0
+        }
+        else if let factorR = dicDataRecord["##RFACTOR"] {
+            factorYValue = Double(factorR) ?? 1.0
+        }
+        else if let prevDicDataRecord = self.labeledDataRecords.last, let factorI = prevDicDataRecord["##IFACTOR"] {
+            factorYValue = Double(factorI) ?? 1.0
         }
         
         let data = arrData.joined(separator: "\n")
@@ -109,7 +159,6 @@ class Jcamp {
                     
                     storeDataForReading = []
                     
-                    //TODO: data label
                     storeLabelDataRecords.append(trimmedLine)
                 }
             }
@@ -117,7 +166,6 @@ class Jcamp {
                 storeDataForReading.append(trimmedLine)
             }
             else {
-                //TODO: add order
                 readingData = false
                 self.getSpectrum(arrData: storeDataForReading, dataRecords: storeLabelDataRecords)
                 

@@ -24,7 +24,8 @@ class Spectrum {
         self.firstX = firstX
         self.lastX = lastX
         
-        switch (dataFormat) {
+        let trimmedFormat = dataFormat.replacingOccurrences(of: " ", with: "")
+        switch (trimmedFormat) {
         case "(X++(Y..Y))", "(X++(R..R))", "(X++(I..I))":
             self.parsePseudoData()
         default:
