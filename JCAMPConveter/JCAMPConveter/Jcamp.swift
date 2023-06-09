@@ -10,12 +10,26 @@ import Foundation
 class Jcamp {
     
     lazy var spectra: [Spectrum] = []
+    lazy var labeledDataRecords: [[String: String]] = []
     
     private lazy var originData: [String] = []
     
     init(_ stringData: String) {
-        self.originData = stringData.components(separatedBy: .newlines)
-        self.readData()
+        if let fileURL = URL(string: stringData) {
+            do {
+                let data = try String(contentsOf: fileURL, encoding: .ascii)
+                self.originData = data.components(separatedBy: .newlines)
+                self.readData()
+            }
+            catch {
+                print(error)
+            }
+        }
+        else {
+            self.originData = stringData.components(separatedBy: .newlines)
+            self.readData()
+        }
+        
     }
     
     private func getSpectrum(arrData: [String], dataRecords: [String]) {
@@ -59,6 +73,7 @@ class Jcamp {
         let data = arrData.joined(separator: "\n")
         let spectrum = Spectrum(data, dataFormat: dataFormatValue, factorX: factorXValue, factorY: factorYValue, firstX: firstXValue, lastX: lastXValue )
         self.spectra.append(spectrum)
+        self.labeledDataRecords.append(dicDataRecord)
     }
     
     private func readData() {
@@ -66,10 +81,15 @@ class Jcamp {
         var storeDataForReading: [String] = []
         var storeLabelDataRecords: [String] = []
         for line in originData {
-            if (line.hasPrefix("##")) {
-                if (line.hasPrefix("##XYDATA=") || line.hasPrefix("##XYPOINTS=") || line.hasPrefix("##PEAK TABLE=") || line.hasPrefix("##PEAK ASSIGNMENTS=") || line.hasPrefix("##DATA TABLE=")) {
+            let trimmedLine = line.trimmingCharacters(in: .whitespaces)
+            if (trimmedLine == "") {
+                //ignore empty line
+                continue
+            }
+            if (trimmedLine.hasPrefix("##")) {
+                if (trimmedLine.hasPrefix("##XYDATA=") || trimmedLine.hasPrefix("##XYPOINTS=") || trimmedLine.hasPrefix("##PEAK TABLE=") || trimmedLine.hasPrefix("##PEAK ASSIGNMENTS=") || trimmedLine.hasPrefix("##DATA TABLE=")) {
                     
-                    let seperatedLine = line.components(separatedBy: "=")
+                    let seperatedLine = trimmedLine.components(separatedBy: "=")
                     let dataFormatStr = "DATAFORMAT=\(seperatedLine[1])"
                     storeLabelDataRecords.append(dataFormatStr)
                     
@@ -90,11 +110,11 @@ class Jcamp {
                     storeDataForReading = []
                     
                     //TODO: data label
-                    storeLabelDataRecords.append(line)
+                    storeLabelDataRecords.append(trimmedLine)
                 }
             }
-            else if (!line.hasPrefix("$") && readingData) {
-                storeDataForReading.append(line)
+            else if (!trimmedLine.hasPrefix("$") && readingData) {
+                storeDataForReading.append(trimmedLine)
             }
             else {
                 //TODO: add order
@@ -107,7 +127,7 @@ class Jcamp {
                 
                 storeDataForReading = []
                 
-                storeLabelDataRecords.append(line)
+                storeLabelDataRecords.append(trimmedLine)
                 
             }
         }

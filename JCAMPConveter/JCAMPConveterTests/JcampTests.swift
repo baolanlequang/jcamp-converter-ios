@@ -128,6 +128,7 @@ final class JcampTests: XCTestCase {
         
         XCTAssertNotNil(jcamp)
         XCTAssertEqual(jcamp?.spectra.count, 2)
+        XCTAssertEqual(jcamp?.labeledDataRecords.count, 2)
     }
     
     func testValidPseudoData() throws {
@@ -148,6 +149,24 @@ final class JcampTests: XCTestCase {
         
         let listX = lastSpectrum?.getListX()
         XCTAssertEqual(listX?.last, 109.0)
+    }
+    
+    func testInitJcampFromURLStr() throws {
+        let bundle = Bundle(for: type(of: self))
+            
+        guard let fileURL = bundle.url(forResource: "test_file_8", withExtension: "dx") else {
+            XCTFail("Failed to locate file")
+            return
+        }
+        
+        jcamp = Jcamp(fileURL.absoluteString)
+        
+        XCTAssertNotNil(jcamp)
+        XCTAssertEqual(jcamp?.spectra.count, 1)
+        XCTAssertEqual(jcamp?.labeledDataRecords.count, 1)
+        
+        let listX = jcamp?.spectra.first?.getListX()
+        XCTAssertEqual(listX?.last?.rounded(), 4000.0)
     }
 
 }
