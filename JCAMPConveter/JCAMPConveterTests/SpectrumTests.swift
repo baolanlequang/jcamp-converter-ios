@@ -10,10 +10,8 @@ import XCTest
 
 final class SpectrumTests: XCTestCase {
     
-    var spectrum: Spectrum!
-
-    override func setUpWithError() throws {
-        let data = """
+    var spectrum: Spectrum? = nil
+    let pseudoData = """
 3200C1276%Sj05Sl3Sm2SJ44So5Sn7SJ8SK7Sq3SK3SO2Sj4SJ28SL0SM1SQ0SK7SM4S
 3519C1501K3SJ0SQ2SL1Sk8SK2Sj8SMSK5SkSn4SJ2Sm0Sl9Sm2Sj8Sl4So0SJSk6Sk7S
 3855C1323j4Sk3Sl3Sj1Sj6Sj3SPSj2SJSRSJ4SQSL7SJ2SM4SK5SN0SK8SL4SN1SL9S
@@ -102,22 +100,45 @@ final class SpectrumTests: XCTestCase {
 31792B6513K1SQSj6Sl7SJ6SpSj0SK5Sk7SM9Sj2Sk7SJ0S
 31999@
 """
-        let factorX = 0.125, factorY = 0.00312499
-        spectrum = Spectrum(data, factorX: factorX, factorY: factorY, firstX: 400.000000, lastX: 4000.000000)
+    let xyData = """
+50, 2.52; 51, 9.32; 52, 7.42; 53, 1.30; 54, 5.46; 61, 4.07
+62, 5.46; 63, 11.17; 64, 2.52; 65, 39.72; 66, 63.70; 67, 4.13
+68, 1.22; 77, 1.89; 79, 1.63; 93, 2.13; 94, 100.00; 95, 8.09
+"""
+
+    override func setUpWithError() throws {
+        
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testGetListX() throws {
-        let listX = spectrum.getListX()
-        XCTAssertEqual(listX.count, 1801)
-        XCTAssertEqual(listX.last?.rounded(), 4000.0)
+    
+    func testGetSpectrumFromPseudoFormat() throws {
+        let factorX = 0.125, factorY = 0.00312499
+        let dataFormats: [String] = ["(X++(Y..Y))", "(X++(R..R))", "(X++(I..I))"]
+        for format in dataFormats {
+            spectrum = Spectrum(pseudoData, dataFormat: format, factorX: factorX, factorY: factorY, firstX: 400.000000, lastX: 4000.000000)
+            
+            let listX = spectrum?.getListX()
+            XCTAssertEqual(listX?.count, 1801)
+            XCTAssertEqual(listX?.last?.rounded(), 4000.0)
+            
+            let listY = spectrum?.getListY()
+            XCTAssertEqual(listY?.count, 1801)
+        }
+        
     }
     
-    func testGetListY() throws {
-        let listY = spectrum.getListY()
-        XCTAssertEqual(listY.count, 1801)
+    func testGetSpectrumFromXYFormat() throws {
+        spectrum = Spectrum(xyData, dataFormat: "(XY..XY)")
+        
+        let listX = spectrum?.getListX()
+        XCTAssertEqual(listX?.count, 18)
+        XCTAssertEqual(listX?.last, 95.0)
+        
+        let listY = spectrum?.getListY()
+        XCTAssertEqual(listY?.count, 18)
+        XCTAssertEqual(listY?.last, 8.09)
     }
 }

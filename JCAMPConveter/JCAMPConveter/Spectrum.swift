@@ -16,8 +16,7 @@ class Spectrum {
     private var factorX: Double, factorY: Double
     private var firstX: Double, lastX: Double
     
-    
-    init(_ data: String, factorX: Double = 1.0, factorY: Double = 1.0, firstX: Double = 0.0, lastX: Double = 0.0) {
+    init(_ data: String, dataFormat: String, factorX: Double = 1.0, factorY: Double = 1.0, firstX: Double = 0.0, lastX: Double = 0.0) {
         self.dataString = data
         self.parser = Parser()
         self.factorX = factorX
@@ -25,10 +24,16 @@ class Spectrum {
         self.firstX = firstX
         self.lastX = lastX
         
-        self.parseData()
+        switch (dataFormat) {
+        case "(X++(Y..Y))", "(X++(R..R))", "(X++(I..I))":
+            self.parsePseudoData()
+        default:
+            self.parseXYData()
+        }
+        
     }
     
-    private func parseData() {
+    private func parsePseudoData() {
         var arrStartX: [Double] = []
         
         let dataLines = self.dataString.components(separatedBy: .newlines)
@@ -76,6 +81,30 @@ class Spectrum {
 
             self.listX.append(arrX)
 
+        }
+    }
+    
+    private func parseXYData() {
+        let dataLines = self.dataString.components(separatedBy: .newlines)
+        
+        for line in dataLines {
+            let removedSpaceLine = line.replacingOccurrences(of: " ", with: "")
+            let arrXY = removedSpaceLine.components(separatedBy: ";")
+            var arrX: [Double] = [], arrY: [Double] = []
+            for xy in arrXY {
+                let values = xy.components(separatedBy: ",")
+                if (values.count < 2) {
+                    return
+                }
+                guard let xValue = Double(values[0]), let yValue = Double(values[1]) else {
+                    return
+                }
+                
+                arrX.append(xValue)
+                arrY.append(yValue)
+            }
+            self.listX.append(arrX)
+            self.listY.append(arrY)
         }
     }
     
