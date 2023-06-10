@@ -16,7 +16,7 @@ public class Spectrum {
     private var factorX: Double, factorY: Double
     private var firstX: Double, lastX: Double
     
-    init(_ data: String, dataFormat: String, factorX: Double = 1.0, factorY: Double = 1.0, firstX: Double = 0.0, lastX: Double = 0.0) {
+    public init(_ data: String, dataFormat: String, factorX: Double = 1.0, factorY: Double = 1.0, firstX: Double = 0.0, lastX: Double = 0.0) {
         self.dataString = data
         self.parser = Parser()
         self.factorX = factorX
@@ -109,7 +109,7 @@ public class Spectrum {
         }
     }
     
-    func getListX() -> [Double] {
+    public func getListX() -> [Double] {
         var result: [Double] = []
         for line in self.listX {
             for xValue in line {
@@ -119,7 +119,7 @@ public class Spectrum {
         return result
     }
     
-    func getListY() -> [Double] {
+    public func getListY() -> [Double] {
         var result: [Double] = []
         for line in self.listY {
             for yValue in line {

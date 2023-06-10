@@ -9,12 +9,12 @@ import Foundation
 
 public class Jcamp {
     
-    lazy var spectra: [Spectrum] = []
-    lazy var labeledDataRecords: [[String: String]] = []
+    public lazy var spectra: [Spectrum] = []
+    public lazy var labeledDataRecords: [[String: String]] = []
     
     private lazy var originData: [String] = []
     
-    init(_ stringData: String) {
+    public init(_ stringData: String) {
         if let fileURL = URL(string: stringData) {
             do {
                 let data = try String(contentsOf: fileURL, encoding: .ascii)
