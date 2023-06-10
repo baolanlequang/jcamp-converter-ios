@@ -1,6 +1,8 @@
 # JcampConverter
 **JcampConverter** is a open-source package to convert JCAMP-DX files to spectra.
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8022920.svg)](https://doi.org/10.5281/zenodo.8022920)
+
 
 If you like my works, you can <a href="https://www.buymeacoffee.com/baolanlequang" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 30px !important;width: 117px !important;" ></a>
 
