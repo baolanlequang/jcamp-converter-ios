@@ -1,6 +1,9 @@
 # JcampConverter
 **JcampConverter** is a open-source package to convert JCAMP-DX files to spectra.
 
+
+If you like my works, you can <a href="https://www.buymeacoffee.com/baolanlequang" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 30px !important;width: 117px !important;" ></a>
+
 ## How to user JcampConverter
 **JcampConverter** is released as dependency package on [CocoaPods](https://cocoapods.org/). 
 
@@ -50,6 +53,9 @@ let jcampData = "<url string or content of your jcamp file>"
 let jcamp = Jcamp(jcampData)
 
 ```
+
+### 3. Demo
+You can clone project [jcamp-viewer-ios](https://github.com/baolanlequang/jcamp-viewer-ios) to see how it works.
             
             
 
