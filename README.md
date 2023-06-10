@@ -4,7 +4,7 @@
 ## How to user JcampConverter
 **JcampConverter** is released as dependency package on [CocoaPods](https://cocoapods.org/). 
 
-### 1. Add *MoJcampConverter* to your project
+### 1. Add *JcampConverter* to your project
 1.1. Setting up *cocoapods*
 
 You can by pass this step if your project is using *cocoapods*.
@@ -41,12 +41,9 @@ import JcampConverter
 
 2.2. Using the converter
 ```swift
-let reader = JcampReader(filePath: path)
+let jcampData = "<url string or content of your jcamp file>"
+let jcamp = Jcamp(jcampData)
 
-//example read number of x of spectrum
-for spec in reader.jcamp!.spectra {
-    print(spec.xValues.count)
-}
 ```
             
             
