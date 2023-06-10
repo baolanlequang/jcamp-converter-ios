@@ -23,6 +23,11 @@ Open `Podfile` and add
 ```
 pod 'JcampConverter', '~> 0.1.0'
 ```
+
+or
+```
+pod` 'JcampConverter', :git => 'https://github.com/baolanlequang/jcamp-converter-ios'
+```
  
 Open your terminal, navigate to the project's location and the following commad to install *MoJcampConverter* to your project.
 
