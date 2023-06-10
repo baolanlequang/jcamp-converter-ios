@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Jcamp {
+public class Jcamp {
     
     lazy var spectra: [Spectrum] = []
     lazy var labeledDataRecords: [[String: String]] = []

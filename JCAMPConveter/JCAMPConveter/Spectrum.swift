@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Spectrum {
+public class Spectrum {
     private var dataString: String!
     
     private var parser: Parser!
