@@ -3,10 +3,17 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8022920.svg)](https://doi.org/10.5281/zenodo.8022920)
 
+## Citation
+If you use this libary, it will be great if you can cite this on your works
+
+```citation
+@misc{https://doi.org/10.5281/zenodo.8022920, doi = {10.5281/ZENODO.8022920}, url = {https://zenodo.org/record/8022920}, author = {Le, Lan}, title = {jcamp-converter-ios}, publisher = {Zenodo}, year = {2023}, copyright = {Open Access}}
+```
+
 
 If you like my works, you can <a href="https://www.buymeacoffee.com/baolanlequang" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 30px !important;width: 117px !important;" ></a>
 
-## How to user JcampConverter
+## How to use JcampConverter
 **JcampConverter** is released as dependency package on [CocoaPods](https://cocoapods.org/). 
 
 ### 1. Add *JcampConverter* to your project
