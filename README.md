@@ -7,16 +7,7 @@
 If you use this libary, it will be great if you can cite this on your works
 
 ```citation
-@misc{
- https://doi.org/10.5281/zenodo.8022920, 
- doi = {10.5281/ZENODO.8022920}, 
- url = {https://zenodo.org/record/8022920}, 
- author = {Le, Lan}, 
- title = {jcamp-converter-ios}, 
- publisher = {Zenodo}, 
- year = {2023}, 
- copyright = {Open Access}
-}
+Lan Le. (2023). jcamp-converter-ios (0.1.1). Zenodo. https://doi.org/10.5281/zenodo.8022920
 ```
 
 
