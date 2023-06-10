@@ -24,7 +24,7 @@ pod init
 Open `Podfile` and add
 
 ```
-pod 'JcampConverter', '~> 0.1.0'
+pod 'JcampConverter', '~> 0.1.1'
 ```
 
 or
