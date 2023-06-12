@@ -2,7 +2,7 @@
 **JcampConverter** is a open-source package to convert JCAMP-DX files to spectra.
 
 ![GitHub release (release name instead of tag name)](https://img.shields.io/github/v/release/baolanlequang/jcamp-converter-ios?include_prereleases&label=version)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8022920.svg)](https://doi.org/10.5281/zenodo.8022920)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8022919.svg)](https://doi.org/10.5281/zenodo.8022919)
 
 ## Citation
 If you use this libary, it will be great if you can cite this on your works
